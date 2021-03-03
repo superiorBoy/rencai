@@ -3,12 +3,12 @@
 		<view class="head">
 			<view class="head_back"></view>
 			<view class="head_center bai_30">
-				<text class="goutong_txt bai_38_bold">沟通</text>
-				<text>对我感兴趣</text>
+				<text  :class="['goutong_txt',qiehuan_active==1?'bai_38_bold':'']" @click="qiehuan(1)">沟通</text>
+				<text  :class="['',qiehuan_active==2?'bai_38_bold':'']" @click="qiehuan(2)">对我感兴趣</text>
 			</view>
 			<view class=" head_right hei_30_bold"></view>
 		</view>
-		<view class="shaixuan_body">
+		<view class="shaixuan_body" v-if="qiehuan_active==1">
 			<view class="shaixuan hui_24">
 				<view :class="['', tab_active == index ? 'hei_24_bold' : '']" v-for="(item, index) in tab" @click="tab_qiehuan(index)">
 					{{ item.text }}
@@ -16,7 +16,7 @@
 				</view>
 			</view>
 		</view>
-		<view class="tabber_body xiaoxi_body">
+		<view class="tabber_body xiaoxi_body" v-if="qiehuan_active==1">
 			<view class="goutong_list">
 				<view class="goutong_item">
 					<view class="goutong_item_left">
@@ -58,6 +58,33 @@
 				</view>
 			</view>
 		</view>
+		<view class="tabber_body zi_body" v-if="qiehuan_active==2">
+			
+			<view class="xingqu_list">
+				<view class="xingqu_item" v-for=" item in 5">
+					<view class="xingqu_item_top">
+						<view class="xingqu_item_top_left">
+							<image src="@/static/qy_img/tx.png" mode="" class="tx"></image>
+							<image src="@/static/qy_img/nan.png" mode="" class="xingbie"></image>
+						</view>
+						<view class="xingqu_item_top_right">
+							<view >
+								<text class="hei_30_bold">胡一天</text> <text class="hui_26 xingqu_item_yaoqiu"> <text>1年以内</text>  <text>大专</text>  6-8K</text>
+							</view>
+							<view class="hei_26 xingqu_item_gongsi">
+								智享体育文化 <text class="xingqu_item_zhiwei">前台</text>
+							</view>
+						</view>
+					</view>
+					<view class="xingqu_item_jainjie qian_26">
+						我的性格活泼开朗，善良大方，诚实有责任心，有较强的人际交往能力。
+					</view>
+					<view class="xingqu_item_bottom qian_26">
+						收藏了我的职位 <text class="lan_26">web前端</text>
+					</view>
+				</view>
+			</view>
+		</view>
 
 		<tabBar :currentPage="currentPage" ref="ls_mainindex"></tabBar>
 	</view>
@@ -80,24 +107,35 @@ export default {
 				{ text: '已约面试', new: false },
 				{ text: '不合适', new: false }
 			],
-			tab_active: 0
+			tab_active: 2,
+			qiehuan_active:2
 		};
 	},
 	onLoad() {},
 	methods: {
 		tab_qiehuan(index) {
 			this.tab_active = index;
+		},
+		qiehuan(index){
+			this.qiehuan_active=index
 		}
 	}
 };
 </script>
 
 <style>
+page{
+	background-color: #f8f8f8;
+}
 .head {
 	background-color: #00c6c9;
 }
 .tabber_body {
 	padding-bottom: 100rpx;
+}
+.zi_body{
+	padding-top: 100rpx;
+	
 }
 .head_center {
 	width: 50%;
@@ -109,6 +147,7 @@ export default {
 	padding-top: 196rpx;
 	padding-left: 30rpx;
 	padding-right: 30rpx;
+	background-color: #FFFFFF;
 }
 .shaixuan_body {
 	padding: 0 30rpx;
@@ -201,5 +240,84 @@ export default {
 	right: -12rpx;
 	top: 20rpx;
 	border-radius: 100%;
+}
+.xingqu_item_top_left{
+		width: 84rpx;
+		height: 84rpx;
+		border-radius: 100%;
+		position: relative;
+		margin-right: 30rpx;
+}
+.tx{
+	width: 100%;
+	height: 100%;
+}
+.xingbie{
+	width: 24rpx;
+	height: 24rpx;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.xingqu_item_bottom{
+	border-top: 2rpx solid #e9e9e9;
+	line-height: 80rpx;
+}
+	
+.xingqu_item{
+	padding:24rpx 30rpx 0 30rpx;
+	margin-bottom: 20rpx;
+	background-color: #FFFFFF;
+}
+.xingqu_item_top{
+	display: flex;
+	align-items: center;
+}
+.xingqu_item_jainjie{
+	margin: 16rpx 0;
+	line-height: 40rpx;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+}
+.xingqu_item_bottom text{
+	margin-left: 8rpx;
+}
+.xingqu_item_zhiwei{
+	margin-left: 20rpx;
+	position: relative;
+}
+.xingqu_item_zhiwei::before{
+	content: '';
+	display: inline-block;
+		width: 4rpx;
+		height: 4rpx;
+		background-color: #666666;
+		border-radius: 100%;
+		position: absolute;
+		left: -10rpx;
+		top: 50%;
+}
+.xingqu_item_yaoqiu{
+	margin-left: 20rpx;
+}
+.xingqu_item_yaoqiu text{
+	margin-right: 20rpx;
+	position: relative;
+}
+.xingqu_item_yaoqiu text::before{
+	content: '';
+	display: inline-block;
+		width: 4rpx;
+		height: 4rpx;
+		background-color: #666666;
+		border-radius: 100%;
+		position: absolute;
+		right: -10rpx;
+		top: 50%;
+}
+.xingqu_item_gongsi{
+	margin-top: 10rpx;
 }
 </style>

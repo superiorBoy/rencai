@@ -10,6 +10,30 @@
 			"path": "pages/qy/xiaoxi"
 		},
 		{
+			"path": "pages/qy/my"
+		},
+		{
+			"path": "pages/qy/zhiwei_guanli"
+		},
+		{
+			"path": "pages/qy/mian_jilu"
+		},
+		{
+			"path": "pages/qy/geren"
+		},
+		{
+			"path": "pages/qy/mian_xq"
+		},
+		{
+			"path": "pages/qy/mian_richeng"
+		},
+		{
+			"path": "pages/qy/shoucang"
+		},
+		{
+			"path": "pages/qy/mian_yaoqing"
+		},
+		{
 			"path": "pages/qy/search"
 		}
 	],

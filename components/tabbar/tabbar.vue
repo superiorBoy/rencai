@@ -43,7 +43,7 @@ export default {
 					imgClick: '/static/qy_img/tabber3_on.png'
 				},
 				{
-					url: 'qy/search',
+					url: 'qy/my',
 					text: '我的',
 					imgNormal: '/static/qy_img/tabber4_no.png',
 					imgClick: '/static/qy_img/tabber4_on.png'
