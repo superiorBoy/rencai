@@ -1,4 +1,22 @@
 <script>
+	var timer_id = 0;
+	if (typeof window != 'undefined') {
+		
+	if (window.innerWidth > 750) {
+	window.innerWidth = 750;
+	timer_id = setInterval(function() {
+		
+	//适配尺寸
+	var el = document.querySelector('html');
+	var n = Number(el.style.fontSize.replace('px', ''));
+	console.log(n)
+	if (n > 30) {
+	el.style.fontSize = '30px';
+	}
+	clearInterval(timer_id);
+	}, 100);
+	}
+	}
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
@@ -33,5 +51,10 @@
 .head_center{text-align: center;}
 .head_right{text-align: right;}
 .head_back image{width: 22rpx;height: 41rpx;}
-
+view,page{
+	max-width: 750px;
+}
+page{
+	margin: 0 auto;
+}
 </style>

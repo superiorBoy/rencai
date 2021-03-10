@@ -34,6 +34,15 @@
 			"path": "pages/qy/mian_yaoqing"
 		},
 		{
+			"path": "pages/qy/gongsi_xq"
+		},
+		{
+			"path": "pages/qy/jianli_xq"
+		},
+		{
+			"path": "pages/qy/chat"
+		},
+		{
 			"path": "pages/qy/search"
 		}
 	],

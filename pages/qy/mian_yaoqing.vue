@@ -85,17 +85,16 @@ export default {
 			this.yao_fangshi = index;
 		},
 		fasong() {
-			console.log(this.curDate, this.time, this.beizhu);
+			console.log(this.curDate, this.time, this.beizhu,this.yao_fangshi);
 		},
 		onDayClick(data) {
 			this.curDate = data.date;
 		},
-		bindTimeChange: function(e) {
+		bindTimeChange(e) {
 			this.time = e.target.value;
 			console.log(this.time);
 		},
-		getTime:function(){
-		
+		getTime(){
 		var date = new Date(),
 		year = date.getFullYear(),
 		month = date.getMonth() + 1,
