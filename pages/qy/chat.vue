@@ -9,24 +9,28 @@
 			<view class=" head_right hei_30_bold"><image src="../../static/qy_img/rili.png" mode="" style="width: 34rpx;height: 34rpx;"></image></view>
 		</view>
 		<view class="chat_tab hui_22">
-			<view class="chat_tab_item">
-				<image src="../../static/qy_img/chat_jianli.png" mode="" style="width: 26rpx;height: 30rpx;"></image>
+			<view class="chat_tab_item" @click="tan_jianli">
+				<image src="../../static/qy_img/chat_jianli.png" mode="" style="width: 26rpx;height: 30rpx;" v-if="top_jianli"></image>
+				<image src="../../static/qy_img/chat_jianli_hui.png" mode="" style="width: 26rpx;height: 30rpx;" v-if="!top_jianli"></image>
 				<view class="">求简历</view>
 			</view>
-			<view class="chat_tab_item">
-				<image src="../../static/qy_img/chat_lianxi.png" mode="" style="width: 30rpx;height: 30rpx;"></image>
+			<view class="chat_tab_item" @click="tan_lianxi">
+				<image src="../../static/qy_img/chat_lianxi.png" mode="" style="width: 30rpx;height: 30rpx;" v-if="top_lianxi"></image>
+				<image src="../../static/qy_img/chat_lianxi_hui.png" mode="" style="width: 30rpx;height: 30rpx;" v-if="!top_lianxi"></image>
 				<view class="">联系方式</view>
 			</view>
-			<view class="chat_tab_item">
-				<image src="../../static/qy_img/chat_mianshi.png" mode="" style="width: 34rpx;height: 30rpx;"></image>
-				<view class="">面试TA</view>
+			<view class="chat_tab_item" @click="tan_mian">
+				<image src="../../static/qy_img/chat_mianshi.png" mode="" style="width: 34rpx;height: 30rpx;" v-if="top_mianshi"></image>
+				<image src="../../static/qy_img/chat_mianshi_hui.png" mode="" style="width: 33rpx;height: 30rpx;" v-if="!top_mianshi"></image>
+				<view class="">{{ top_mianshi ? '面试TA' : '约面试' }}</view>
 			</view>
-			<view class="chat_tab_item">
+			<view class="chat_tab_item" v-if="top_luyong">
 				<image src="../../static/qy_img/chat_luyong.png" mode="" style="width: 28rpx;height: 30rpx;"></image>
 				<view class="">录用TA</view>
 			</view>
-			<view class="chat_tab_item">
-				<image src="../../static/qy_img/chat_biaoji.png" mode="" style="width: 30rpx;height: 32rpx;"></image>
+			<view class="chat_tab_item" @click="biaoji()">
+				<image src="../../static/qy_img/chat_biaoji.png" mode="" style="width: 30rpx;height: 32rpx;" v-if="top_biaoji"></image>
+				<image src="../../static/qy_img/chat_biaoji_hui.png" mode="" style="width: 30rpx;height: 32rpx;" v-if="!top_biaoji"></image>
 				<view class="">标记</view>
 			</view>
 		</view>
@@ -38,7 +42,7 @@
 			<text class="chakan lan_26">查看</text>
 		</view>
 
-		<view class="chat_body " style="padding-bottom: 900px;" @click="tan_hide()">
+		<view class="chat_body " @click="tan_hide()">
 			<view class="zhanwei"></view>
 			<!-- 有待面试时显示 -->
 
@@ -142,6 +146,7 @@
 				</view>
 				<view class="shou_jianli_bottom lan_28">点击预览附件简历</view>
 			</view>
+			<!-- 发送邀请 -->
 			<view class="message chat_my">
 				<view class="message_chat_body">
 					<view class="message_chat_txt send_yaoqig">
@@ -150,6 +155,52 @@
 					</view>
 					<view class="zhuangtai qian_20">送达</view>
 				</view>
+				<image src="../../static/qy_img/tx.png" mode="" class="chat_tx"></image>
+			</view>
+
+			<!-- 修改面试邀请 -->
+			<view class="gai_shijian qian_26">你修改了面试时间</view>
+
+			<view class="message chat_my chat_my_yao_xq">
+				<!-- <view class="message_chat_body"> -->
+				<view class="yao_xq">
+					<view class="yao_xq_title bai_30">线下面试邀请</view>
+					<view class="yao_xq_body">
+						<view class="yao_xq_center qian_26">
+							<view class="yao_xq_center_list">
+								面试职位
+								<text class="hei_26">前端开发工程师</text>
+							</view>
+							<view class="yao_xq_center_list">
+								面试时间
+								<text class="hei_26">2021/03/10 10:00</text>
+							</view>
+							<view class="yao_xq_center_list">
+								联&ensp;系&ensp;人
+								<text class="hei_26">王先生</text>
+							</view>
+							<view class="yao_xq_center_list">
+								联系电话
+								<text class="hei_26">15226903250</text>
+							</view>
+						</view>
+						<view class="yao_xq_bottom hui_22">
+							<view class="yao_xq_bottom_list hei_26_bold">
+								<text class="hei_24_bold">前端开发工程师</text>
+								<text>10-15K</text>
+							</view>
+							<view class="yao_xq_bottom_list "><text class="">红盟网络</text></view>
+							<view class="yao_xq_bottom_list ">
+								<view class="yao_xq_bottom_list_left ">
+									<text class="">杭州</text>
+									<text class="">3-5年</text>
+									<text class="">不限</text>
+								</view>
+							</view>
+						</view>
+					</view>
+				</view>
+				<!-- </view> -->
 				<image src="../../static/qy_img/tx.png" mode="" class="chat_tx"></image>
 			</view>
 		</view>
@@ -179,65 +230,126 @@
 							<view class="swiper_item_list ">
 								<view class="swiper_item">
 									<image src="../../static/qy_img/chuangkou_tu.png" mode="" style="width: 53rpx;height: 46rpx;"></image>
-									<view class="swiper_item_txt">
-										图片
-									</view>
+									<view class="swiper_item_txt">图片</view>
 								</view>
 								<view class="swiper_item">
 									<image src="../../static/qy_img/chuangkou_yuyin.png" mode="" style="width: 59rpx;height: 45rpx;"></image>
-									<view class="swiper_item_txt">
-									语音
-									</view>
-									</view>
+									<view class="swiper_item_txt">语音</view>
+								</view>
 								<view class="swiper_item">
-									<image src="../../static/qy_img/chuangkou_zhuanfa.png" mode="" style="width: 59rpx;height: 45rpx;"></image>
-									<view class="swiper_item_txt">
-									转发TA
-									</view>
-									</view>
+									<image src="../../static/qy_img/chuangkou_zhuanfa.png" mode="" style="width: 43rpx;height: 46rpx;"></image>
+									<view class="swiper_item_txt">转发TA</view>
+								</view>
 								<view class="swiper_item">
-									<image src="../../static/qy_img/chuangkou_yuyin.png" mode="" style="width: 59rpx;height: 45rpx;"></image>
-									<view class="swiper_item_txt">
-									更换职位</view>
-									</view>
+									<image src="../../static/qy_img/chuangkou_genghuan.png" mode="" style="width:48rpx;height: 48rpx;"></image>
+									<view class="swiper_item_txt">更换职位</view>
+								</view>
 								<view class="swiper_item">
-									<image src="../../static/qy_img/chuangkou_yuyin.png" mode="" style="width: 59rpx;height: 45rpx;"></image>
-									<view class="swiper_item_txt">
-									发送地址</view>
-									</view>
+									<image src="../../static/qy_img/chuangkou_dizhi.png" mode="" style="width: 44rpx;height: 52rpx;"></image>
+									<view class="swiper_item_txt">发送地址</view>
+								</view>
 								<view class="swiper_item">
-									<image src="../../static/qy_img/chuangkou_yuyin.png" mode="" style="width: 59rpx;height: 45rpx;"></image>
-									<view class="swiper_item_txt">
-									语音通话</view>
+									<view class="swiper_item_top">
+										<image src="../../static/qy_img/chuangkou_dianhua.png" mode="" style="width:46rpx;height: 46rpx;"></image>
+										<text class="bai_22">new</text>
 									</view>
+									<view class="swiper_item_txt">语音通话</view>
+								</view>
 								<view class="swiper_item">
-									<image src="../../static/qy_img/chuangkou_yuyin.png" mode="" style="width: 59rpx;height: 45rpx;"></image>
-									<view class="swiper_item_txt">
-									视频通话</view>
-									</view>
+									<image src="../../static/qy_img/chuangkou_shipin.png" mode="" style="width: 56rpx;height: 36rpx;"></image>
+									<view class="swiper_item_txt">视频通话</view>
+								</view>
 								<view class="swiper_item">
-									<image src="../../static/qy_img/chuangkou_yuyin.png" mode="" style="width: 59rpx;height: 45rpx;"></image>
-									<view class="swiper_item_txt">
-									短信通知</view>
+									<view class="swiper_item_top">
+										<image src="../../static/qy_img/chuangkou_duanxin.png" mode="" style="width: 37rpx;height: 46rpx;"></image>
+										<text class="bai_22">new</text>
 									</view>
+									<view class="swiper_item_txt">短信通知</view>
+								</view>
 							</view>
 						</swiper-item>
 						<swiper-item>
 							<view class="swiper_item_list">
 								<view class="swiper_item">
 									<image src="../../static/qy_img/chuangkou_yuyin.png" mode="" style="width: 59rpx;height: 45rpx;"></image>
-									<view class="swiper_item_txt">
-									测试</view></view>
+									<view class="swiper_item_txt">测试</view>
+								</view>
 								<view class="swiper_item">
 									<image src="../../static/qy_img/chuangkou_yuyin.png" mode="" style="width: 59rpx;height: 45rpx;"></image>
-									<view class="swiper_item_txt">
-									测试</view></view>
+									<view class="swiper_item_txt">测试</view>
+								</view>
 							</view>
 						</swiper-item>
 					</swiper>
 				</view>
 			</view>
 		</view>
+
+		<!-- 弹出层 简历-->
+		<uni-popup id="popup_jianli" ref="popup_jianli" type="center">
+			<view class="tan_jianli">
+				<view class="tan_jianli_title qian_28">确定向此人请求简历吗？</view>
+				<view class="tan_jianli_bottom">
+					<view class="tan_jianli_queding lan_28" @click="tan_jianli_queding">确定</view>
+					<view class="tan_jianli_quxiao qian_28" @click="tan_jianli_quxiao">取消</view>
+				</view>
+			</view>
+		</uni-popup>
+		
+		<!-- 弹出层 联系-->
+		<uni-popup id="popup_lianxi" ref="popup_lianxi" type="center">
+			<view class="tan_jianli">
+				<view class="tan_jianli_title qian_28">确定向此人请求联系方式吗？</view>
+				<view class="tan_jianli_bottom">
+					<view class="tan_jianli_queding lan_28" @click="tan_lianxi_queding">确定</view>
+					<view class="tan_jianli_quxiao qian_28" @click="tan_lianxi_quxiao">取消</view>
+				</view>
+			</view>
+		</uni-popup>
+
+		<!-- 弹出层 标记-->
+		<uni-popup id="popup" ref="popup" type="bottom">
+			<view class="tan_biaoji">
+				<view class="tan_biaoji_title hei_34_bold">
+					<text>选择标记</text>
+					<image src="../../static/qy_img/tan_close.png" mode="" @click="bianji_close"></image>
+				</view>
+				<view class="tan_biaoji_list tan_biaoji_list1" @click="biaoji_shoucang">
+					<image src="../../static/qy_img/chat_shoucang.png" mode=""></image>
+					<view class="tan_biaoji_list_right">
+						<view class="hei_30_bold tan_biaoji_list_title">收藏此人</view>
+						<view class="hui_26">收藏后再消息列表中标星展示，方便查找</view>
+					</view>
+				</view>
+				<view class="tan_biaoji_list" @click="biaoji_buheshi">
+					<image src="../../static/qy_img/chat_buheshi.png" mode=""></image>
+					<view class="tan_biaoji_list_right">
+						<view class="hei_30_bold tan_biaoji_list_title">不合适</view>
+						<view class="hui_26">再消息列表中隐藏此人，消息不再提醒</view>
+					</view>
+				</view>
+			</view>
+		</uni-popup>
+
+		<!-- 弹出层 面试方式-->
+		<uni-popup id="popup_mian" ref="popup_mian" type="bottom">
+			<view class="tan_mian">
+				<view class="tan_mian_title hei_34_bold">
+					<text>选选择面试方式</text>
+					<image src="../../static/qy_img/tan_close.png" mode="" @click="tan_main_close"></image>
+				</view>
+				<view class="tan_mian_bottom">
+					<view class="tan_mian_bottom_item" @click="tan_main_xianxia">
+						<image src="../../static/qy_img/mian_fs_xianxia.png" mode=""></image>
+						<view class="hui_26">线下面试</view>
+					</view>
+					<view class="tan_mian_bottom_item" @click="tan_main_shipin">
+						<image src="../../static/qy_img/mian_fs_shipin.png" mode=""></image>
+						<view class="hui_26">视频面试</view>
+					</view>
+				</view>
+			</view>
+		</uni-popup>
 	</view>
 </template>
 
@@ -251,7 +363,12 @@ export default {
 		return {
 			isShowEmj: false,
 			chat_txt: '',
-			chuangkou: true
+			chuangkou: false,
+			top_jianli: true,
+			top_lianxi: true,
+			top_mianshi: true,
+			top_biaoji: true,
+			top_luyong: true
 		};
 	},
 	onLoad() {},
@@ -259,6 +376,55 @@ export default {
 		navigateBack() {
 			uni.navigateBack();
 		},
+		tan_jianli() {
+			this.$refs.popup_jianli.open();
+		},
+		tan_jianli_queding() {
+			this.$refs.popup_jianli.close();
+		},
+		tan_jianli_quxiao() {
+			this.$refs.popup_jianli.close();
+		},
+		tan_lianxi(){
+			this.$refs.popup_lianxi.open();
+		},
+		tan_lianxi_queding() {
+			this.$refs.popup_lianxi.close();
+		},
+		tan_lianxi_quxiao() {
+			this.$refs.popup_lianxi.close();
+		},
+		biaoji() {
+			this.$refs.popup.open();
+		},
+		bianji_close() {
+			this.$refs.popup.close();
+		},
+		biaoji_shoucang() {
+			this.$refs.popup.close();
+		},
+		biaoji_buheshi() {
+			this.$refs.popup.close();
+		},
+		tan_mian() {
+			this.$refs.popup_mian.open();
+		},
+		tan_main_xianxia() {
+			uni.navigateTo({
+				url: 'mian_yaoqing?state=1'
+			});
+			this.$refs.popup_mian.close();
+		},
+		tan_main_shipin() {
+			uni.navigateTo({
+				url: 'mian_yaoqing?state=2'
+			});
+			this.$refs.popup_mian.close();
+		},
+		tan_main_close() {
+			this.$refs.popup_mian.close();
+		},
+		change() {},
 		go_yaoyue() {
 			uni.navigateTo({
 				url: 'mian_yaoqing'
@@ -321,6 +487,8 @@ export default {
 	padding-right: 30rpx;
 	background-color: #f8f8f8;
 	position: relative;
+	padding-bottom: 200rpx;
+	
 }
 .zhiwei {
 	transform: scale(0.9);
@@ -672,14 +840,188 @@ export default {
 .swiper_item:nth-child(4) {
 	margin-bottom: 66rpx;
 }
-.swiper_item_txt{
+.swiper_item_txt {
 	position: absolute;
-	left: 50% ;
+	left: 50%;
 	bottom: 0;
-	transform: translate(-50%,0);
+	transform: translate(-50%, 0);
 	width: 100%;
 }
-.swiper{
+.swiper {
 	height: 380rpx;
+}
+
+.swiper_item_top {
+	position: relative;
+}
+.swiper_item_top text {
+	display: inline-block;
+	padding: 0 6rpx;
+	height: 30rpx;
+	background-color: #f43a51;
+	border-radius: 15rpx;
+	line-height: 30rpx;
+	position: absolute;
+	top: -18rpx;
+	right: 14rpx;
+}
+
+.tan_biaoji {
+	/* height: 513rpx; */
+	background-color: #ffffff;
+	padding: 50rpx 30rpx 0;
+	border-radius: 20rpx 20rpx 0rpx 0rpx;
+	box-sizing: border-box;
+}
+.tan_biaoji_title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.tan_biaoji_title image {
+	width: 28rpx;
+	height: 29rpx;
+}
+.tan_biaoji_list {
+	display: flex;
+	align-items: center;
+	padding: 48rpx 0;
+}
+.tan_biaoji_list1 {
+	border-bottom: 2rpx solid #d9d9d9;
+}
+.tan_biaoji_list image {
+	width: 86rpx;
+	height: 86rpx;
+}
+.tan_biaoji_list_right {
+	margin-left: 32rpx;
+}
+.tan_biaoji_list:first-child {
+	border-bottom: 2rpx solid #d9d9d9;
+	margin-bottom: 50rpx;
+	padding-bottom: 48rpx;
+}
+.tan_biaoji_list_title {
+	margin-bottom: 8rpx;
+}
+
+.yao_xq_title {
+	height: 80rpx;
+	background-color: #00c6c9;
+	line-height: 80rpx;
+	padding-left: 30rpx;
+	border-radius: 10rpx 10rpx 0rpx 0rpx;
+}
+.yao_xq {
+	background-color: #ffffff;
+	border-radius: 10rpx;
+	width: 600rpx;
+	margin-right: 18rpx;
+}
+.yao_xq_body {
+	padding: 0 30rpx 34rpx;
+}
+.yao_xq_center_list {
+	margin-top: 20rpx;
+}
+.yao_xq_center_list text {
+	margin-left: 34rpx;
+}
+.yao_xq_bottom {
+	background-color: #f8f8f8;
+	border-radius: 5rpx;
+	margin-top: 36rpx;
+	padding: 30rpx 30rpx 20rpx;
+}
+.yao_xq_bottom_list {
+	margin-bottom: 12rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.yao_xq_bottom_list_left text {
+	margin-right: 20rpx;
+	position: relative;
+}
+.yao_xq_bottom_list_left text::before {
+	position: absolute;
+	content: '';
+	display: inline-block;
+	width: 2rpx;
+	height: 22rpx;
+	background-color: #999999;
+	top: 6rpx;
+	right: -10rpx;
+}
+.yao_xq_bottom_list_left text:last-child::before {
+	content: none;
+}
+.gai_shijian {
+	text-align: center;
+	line-height: 104rpx;
+}
+.tan_jianli {
+	width: 536rpx;
+	background-color: #ffffff;
+	border-radius: 10rpx;
+	width: 536rpx;
+	height: 225rpx;
+	background-color: #ffffff;
+	border-radius: 10rpx;
+}
+.tan_jianli_title {
+	line-height: 130rpx;
+	padding-left: 40rpx;
+}
+.tan_jianli_bottom {
+	display: flex;
+	align-items: center;
+	height: 94rpx;
+	border-top: 2rpx solid #c6c6c6;
+}
+.tan_jianli_queding {
+	width: 50%;
+	text-align: center;
+
+	line-height: 90rpx;
+	border-right: 2rpx solid #eeeeee;
+}
+.tan_jianli_quxiao {
+	width: 50%;
+	text-align: center;
+	line-height: 90rpx;
+}
+.tan_mian {
+	background-color: #ffffff;
+	border-radius: 20rpx 20rpx 0rpx 0rpx;
+	padding: 55rpx 30rpx 40rpx;
+	box-sizing: border-box;
+}
+.tan_mian_title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.tan_mian_title image {
+	width: 28rpx;
+	height: 29rpx;
+}
+.tan_mian_bottom {
+	display: flex;
+	align-items: center;
+	margin-top: 40rpx;
+}
+.tan_mian_bottom_item {
+	width: 50%;
+	text-align: center;
+}
+.tan_mian_bottom_item image {
+	width: 110rpx;
+	height: 110rpx;
+	margin-bottom: 10rpx;
+}
+.chat_my_yao_xq {
+	align-items: flex-start;
 }
 </style>

@@ -13,7 +13,16 @@
 			"path": "pages/qy/my"
 		},
 		{
+			"path": "pages/qy/fabu_zhiwei"
+		},
+		{
+			"path": "pages/qy/fabu_success"
+		},
+		{
 			"path": "pages/qy/zhiwei_guanli"
+		},
+		{
+			"path": "pages/qy/zhuye"
 		},
 		{
 			"path": "pages/qy/mian_jilu"

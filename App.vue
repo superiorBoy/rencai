@@ -57,4 +57,29 @@ view,page{
 page{
 	margin: 0 auto;
 }
+
+	
+/* app沉浸式配置	 */
+/* APP-PLUS */
+/* #ifdef APP-PLUS */
+  .head{
+	  
+  } 
+  .zi_body{
+	  
+  } 
+  .tab_body{
+	  
+  }
+  .index_body{
+	  
+  }
+  .chat_body{
+	  
+  }
+   
+/* #endif */
+
+
+
 </style>

@@ -54,7 +54,8 @@
 			<view class="my_bottom">
 		
 		<view class="my_zhiwei">
-			<view class="my_zhiwei_item hei_24">
+
+			<view class="my_zhiwei_item hei_24" @click="tiaozhuan('zhiwei_guanli')">
 				<image src="../../static/qy_img/my_top1.png" mode=""></image>
 				<view class="">
 					职位管理
@@ -169,7 +170,13 @@ export default {
 		};
 	},
 	onLoad() {},
-	methods: {}
+	methods: {
+		tiaozhuan(url){
+			uni.navigateTo({
+				url:url
+			})
+		}
+	}
 };
 </script>
 

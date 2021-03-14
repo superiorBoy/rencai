@@ -70,8 +70,10 @@ export default {
 		this.markDays.push(today);
 		this.time=this.getTime()
 	},
-	onLoad() {
-		
+	onLoad(option) {
+		if(option.state){
+			this.yao_fangshi=option.state
+		}
 	},
 	onShow() {
 		

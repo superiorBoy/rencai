@@ -18,7 +18,7 @@
 		</view>
 		<view class="tabber_body xiaoxi_body" v-if="qiehuan_active==1">
 			<view class="goutong_list">
-				<view class="goutong_item">
+				<view class="goutong_item" @click="go_chat">
 					<view class="goutong_item_left">
 						<image src="@/static/qy_img/tx.png" mode=""></image>
 						<text class="weidu bai_20">5</text>
@@ -37,7 +37,7 @@
 						</view>
 					</view>
 				</view>
-				<view class="goutong_item" v-for="item in 5">
+				<view class="goutong_item" v-for="item in 5" @click="go_chat">
 					<view class="goutong_item_left">
 						<image src="@/static/qy_img/tx.png" mode=""></image>
 						<text class="weidu bai_20">5</text>
@@ -118,6 +118,12 @@ export default {
 		},
 		qiehuan(index){
 			this.qiehuan_active=index
+		},
+		go_chat(){
+			
+			uni.navigateTo({
+				url: 'chat'
+			});
 		}
 	}
 };
