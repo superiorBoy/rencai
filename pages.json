@@ -7,7 +7,10 @@
 			"path": "pages/index/login_xuanze"
 		},
 		{
-			"path": "pages/qy/index"
+			"path": "pages/qy/index",
+			"style": {
+			"enablePullDownRefresh": true  //允许上拉加载和下拉刷新为true
+			}
 		},
 		{
 			"path": "pages/qy/xiaoxi"

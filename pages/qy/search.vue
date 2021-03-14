@@ -23,23 +23,14 @@
 		<view class="tabber_body index_body">
 			<view class="search_title hei_30_bold">
 				<text>最近搜索</text>
-				<image src="@/static/qy_img/del.png" mode=""></image>
+				<image src="@/static/qy_img/del.png" mode="" @click="del_jilu"></image>
 			</view>
 			<view class="zuijin_search hui_24">
-				<text v-for="item in zuijin_arry">{{item}}</text>
+				<text v-for="item in zuijin_arry" @click="dianji(item)">{{item}}</text>
 			</view>
 			<view class="search_title hei_30_bold"><text>热门推荐</text></view>
 			<view class="search_hot hui_24">
-				<text v-for="item in tuijian_arry">{{item}}</text>
-				<text>IOS</text>
-				<text>typescript</text>
-				<text>JavaScript</text>
-				<text>Linux</text>
-				<text>node.js</text>
-				<text>cocos2d-x</text>
-				<text>Windows</text>
-				<text>Android</text>
-				<text>HTML</text>
+				<text v-for="item in tuijian_arry" @click="dianji(item)">{{item}}</text>
 			</view>
 		</view>
 
@@ -60,7 +51,9 @@ export default {
 			zhiwei_arry: ['软件工程师', '后端工程师', 'UI', '产品经理'],
 			sou_txt:'',
 			zuijin_arry:['vue','java','前端开发工程师','.net','后端开发工程师杭州','前端'],
-			tuijian_arry:['.NET','Node.js','U3D开发','Flash开发','全栈开发','前端开发','web前端','小程序','移动端','pc端'],
+			tuijian_arry:['.NET','Node.js','U3D开发','Flash开发','全栈开发','前端开发',
+			'web前端','小程序','移动端','pc端','IOS','typescript','JavaScript',
+			'Linux','node.js','cocos2d-x','Windows','Android','HTML'],
 		};
 	},
 	onLoad() {},
@@ -71,6 +64,12 @@ export default {
 		},
 		sousuo(){
 			console.log(this.sou_txt)
+		},
+		dianji(item){
+			console.log(item)
+		},
+		del_jilu(){
+			console.log('删除搜索记录')
 		}
 	}
 };

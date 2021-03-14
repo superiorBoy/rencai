@@ -5,10 +5,10 @@
 			<view>{{ y + '年' + formatNum(m) + '月' }}</view>
 			<view class="next" @click="changeMonth('next')">下个月</view>
 		</view>
-		<view class="week">
+		<view class="week" >
 			<view class="week-day" v-for="(item, index) in weekDay" :key="index">{{ item }}</view>
 		</view>
-		<view :class="{ hide: !monthOpen }" class="content" :style="{ height: height }">
+		<view :class="{ hide: !monthOpen }" class="content" :style="{ height: height }" >
 			<view :style="{ top: positionTop + 'rpx' }" class="days">
 				<view class="item" v-for="(item, index) in dates" :key="index">
 					<view
@@ -53,10 +53,7 @@ export default {
 			}
 		},
 		//是否展示月份切换按钮
-		headerBar: {
-			type: Boolean,
-			default: true
-		},
+
 		// 是否展开
 		open: {
 			type: Boolean,
@@ -86,7 +83,8 @@ export default {
 			dates: [], // 当前月的日期数据
 			positionTop: 0,
 			monthOpen: true,
-			choose: ''
+			choose: '',
+			headerBar:false
 		};
 	},
 	created() {
@@ -281,7 +279,10 @@ export default {
 				}
 			}
 			this.dates = this.monthDay(this.y, this.m);
-		}
+		},
+
+		
+		           
 	}
 };
 </script>
@@ -347,8 +348,8 @@ export default {
 			.item {
 				position: relative;
 				display: block;
-				height: 90rpx;
-				line-height: 90rpx;
+				height: 86rpx;
+				line-height: 86rpx;
 				width: calc(100% / 7);
 
 				.day {

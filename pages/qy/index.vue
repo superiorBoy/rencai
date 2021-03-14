@@ -5,7 +5,7 @@
 			<view class="head_center bai_38">前端工程师</view>
 			<view class=" head_right hei_30_bold"></view>
 		</view>
-		<view class="index_shaixuan hei_26"  v-if="!zanwu">
+		<view class="index_shaixuan hei_26" v-if="!zanwu">
 			<view class="index_shaixuan_left">
 				<view class="index_shaixuan_left_item">推荐</view>
 				<view class="index_shaixuan_left_item">
@@ -16,7 +16,7 @@
 			</view>
 			<view class="index_shaixuan_right hui_24">
 				<pickerAddress2 @change="city_change">
-				<view class="index_shaixuan_right_item">{{city}}</view>
+					<view class="index_shaixuan_right_item">{{ city }}</view>
 				</pickerAddress2>
 				<view class="index_shaixuan_right_item" @click="shaixuan">
 					筛选
@@ -26,7 +26,7 @@
 		</view>
 		<view class="tabber_body index_body">
 			<view class="index_list" v-if="!zanwu">
-				<view class="index_item" v-for="item in 10" @click="go_xq()">
+				<view class="index_item" v-for="item in 10" @click="go_chat()">
 					<view class="index_item_top">
 						<view class="index_item_top_left">
 							<view class="index_item_name hei_34_bold">李雪夏</view>
@@ -58,20 +58,14 @@
 					</view>
 				</view>
 			</view>
-			
-			<view class="zanwu"v-if="zanwu">
+
+			<view class="zanwu" v-if="zanwu">
 				<image src="../../static/qy_img/zhiwei_zanwu.png" mode="widthFix"></image>
-				<view class="hui_30">
-					目前没有在线职位
-				</view>
-				<view class="qian_24 zanwu_txt">
-					发布职位才能获取精准的人才推荐
-				</view>
-				
+				<view class="hui_30">目前没有在线职位</view>
+				<view class="qian_24 zanwu_txt">发布职位才能获取精准的人才推荐</view>
+
 				<button type="" class="bai_30" @click="fabu">发布新职位</button>
 			</view>
-			
-			
 		</view>
 		<tabBar :currentPage="currentPage" ref="ls_mainindex"></tabBar>
 	</view>
@@ -80,6 +74,10 @@
 <script>
 import tabBar from '@/components/tabbar/tabbar.vue';
 import pickerAddress2 from '@/components/wangding-pickerAddress/wangding-pickerAddress.vue';
+//#ifdef H5
+import $ from '@/common/jquery-3.4.1.min.js';
+import { loadBMap } from '@/common/map.js';
+//#endif
 export default {
 	components: {
 		tabBar,
@@ -88,39 +86,100 @@ export default {
 	data() {
 		return {
 			currentPage: 'qy/index',
-			zanwu:false,
-			city:'杭州'
+			zanwu: false,
+			city: '',
+			
 		};
 	},
-	onLoad() {},
+	onLoad() {
+		// #ifdef H5
+		window.initBaiduMapScript = () => {
+			// console.log(BMap);
+			this.getlocation();
+		};
+		loadBMap('initBaiduMapScript');
+		// #endif
+	},
+	//下拉刷新
+	onPullDownRefresh: function() {
+		console.log('下拉刷新');
+		uni.showToast({
+			title: '已刷新',
+			duration: 2000,
+			icon: 'none'
+		});
+		uni.stopPullDownRefresh();
+	},
 	methods: {
-		fabu(){
-			uni.navigateTo({
-				url:'fabu_zhiwei'
-			})
+		//上拉加载
+		onReachBottom() {
+			console.log('上拉加载');
+			uni.showToast({
+				title: '没有更多内容了',
+				duration: 2000,
+				icon: 'none'
+			});
+			uni.stopPullDownRefresh();
 		},
-		shaixuan(){
+		fabu() {
 			uni.navigateTo({
-				url:'shaixuan'
-			})
+				url: 'fabu_zhiwei'
+			});
+		},
+		shaixuan() {
+			uni.navigateTo({
+				url: 'shaixuan'
+			});
 		},
 		city_change(e) {
 			console.log(e);
-			this.city =e.data[1];
+			this.city = e.data[1];
 		},
-		go_xq(){
+		go_chat() {
 			uni.navigateTo({
-				url:'jianli_xq'
-			})
+				url: 'chat'
+			});
+		},
+		// 获取经纬度
+		getlocation() {
+			const that = this;
+			this.$nextTick(function() {
+				try {
+					const geolocation = new BMap.Geolocation();
+					geolocation.getCurrentPosition(function(r) {
+						$.ajax({
+							url: '//api.map.baidu.com/geocoder/v2/?ak=eIxDStjzbtH0WtU50gqdXYCz&output=json&pois=1&location=' + r.latitude + ',' + r.longitude,
+							type: 'GET',
+							async: false, //设置同步。ajax默认异步
+							dataType: 'jsonp',
+							jsonp: 'callback', //传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
+							jsonpCallback: 'callback', //自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
+							timeout: 5000,
+							contentType: 'application/json; charset=utf-8',
+							success: function(res) {
+								console.log(res);
+								that.city = res.result.addressComponent.city;
+								uni.setStorage({
+									key: 'dizhi',
+									data: {
+										sheng: res.result.addressComponent.province,
+										shi: res.result.addressComponent.city,
+										qu: res.result.addressComponent.district
+									}
+								});
+							}
+						});
+					});
+				} catch (e) {
+					console.log(e);
+				}
+			});
 		}
 	}
 };
 </script>
 
 <style>
-page {
-	/* background-color: #f8f8f8; */
-}
 .head {
 	background-color: #00c6c9;
 }
@@ -178,16 +237,16 @@ page {
 	position: relative;
 	padding: 0 20rpx 0 10rpx;
 }
-.index_shaixuan_right_item::before{
+.index_shaixuan_right_item::before {
 	content: '';
 	display: inline-block;
 	width: 12rpx;
 	height: 10rpx;
 	background: url(../../static/qy_img/index_before.png) no-repeat;
 	background-size: 100% 100%;
-  position: absolute;
-  bottom: 7rpx;
-  right: 7rpx;
+	position: absolute;
+	bottom: 7rpx;
+	right: 7rpx;
 }
 .hongdian {
 	display: inline-block;
@@ -298,22 +357,22 @@ page {
 	-webkit-line-clamp: 2;
 	overflow: hidden;
 }
-	.zanwu{
-		text-align: center;
-	}
-.zanwu image{
-		width: 366rpx;
-		height: 199rpx;
-		margin: 200rpx 0 130rpx;
+.zanwu {
+	text-align: center;
 }
-.zanwu button{
-		width: 450rpx;
-		height: 80rpx;
-		background-color: #00c6c9;
-		border-radius: 10rpx;
-		line-height: 80rpx;
+.zanwu image {
+	width: 366rpx;
+	height: 199rpx;
+	margin: 200rpx 0 130rpx;
 }
-.zanwu_txt{
+.zanwu button {
+	width: 450rpx;
+	height: 80rpx;
+	background-color: #00c6c9;
+	border-radius: 10rpx;
+	line-height: 80rpx;
+}
+.zanwu_txt {
 	margin: 20rpx 0 100rpx;
 }
 </style>

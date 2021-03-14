@@ -54,7 +54,7 @@
 				<view class="gongsi_caozuo_left">
 					<image src="../../static/qy_img/gongsi_genghuan.png" mode=""></image>更换公司
 				</view>
-				<view class="gongsi_caozuo_right">
+				<view class="gongsi_caozuo_right" @click="bianji">
 					<image src="../../static/qy_img/gongsi_bianji.png" mode="" ></image>编辑公司信息
 				</view>
 				
@@ -73,6 +73,11 @@ export default {
 	methods: {
 		navigateBack() {
 			uni.navigateBack();
+		},
+		bianji(){
+			uni.navigateTo({
+				url:'wanshan_xinxi'
+			})
 		}
 	}
 };

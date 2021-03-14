@@ -10,11 +10,13 @@
 			<view class="yao_top">
 				<view class="yao_top_list hei_32_bold">邀请张珊珊参加面试</view>
 				<view class="yao_top_list">
-					<text class="hei_30_bold">web前端开发工程师</text>
+					<text class="hei_30_bold">{{zhiwei}}</text>
+					<picker mode="selector" :range="zhiwei_arry" @change="zhiwei_change">
 					<view class="yao_top_gai qian_28">
 						修改职位
 						<image src="../../static/qy_img/go_right.png" mode=""></image>
 					</view>
+					</picker>
 				</view>
 			</view>
 			<view class="yao_fangshi hui_26">
@@ -34,9 +36,8 @@
 				</view>
 				<image src="../../static/qy_img/go_right.png" mode=""></image>
 			</view>
-			<view class="content"></view>
 			<view class="xuan_riqi">
-				<picker mode="time" :value="time" @change="bindTimeChange"><view class="xuan_riqi_title hei_30_bold">请选择时间</view></picker>
+				<picker mode="time" :value="time" @change="bindTimeChange" ><view class="xuan_riqi_title hei_30_bold">请选择时间</view></picker>
 				<ren-calendar ref="ren" :markDays="markDays" :headerBar="false" @onDayClick="onDayClick" :time="time"></ren-calendar>
 			</view>
 			<view class="beizhu">
@@ -60,7 +61,9 @@ export default {
 			beizhu: '',
 			curDate: '',
 			markDays: [],
-			time: ''
+			time: '',
+			zhiwei_arry: ['web前端开发工程师','软件工程师', '后端工程师', 'UI', '产品经理'],
+			zhiwei:'web前端开发工程师'
 		};
 	},
 	created() {},
@@ -109,6 +112,10 @@ export default {
 		// var timer = year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
 		var timer =  hour + ':' + minute ;
 		return timer;
+		},
+		zhiwei_change(e) {
+			console.log(e.detail.value);
+			this.zhiwei = this.zhiwei_arry[e.detail.value];
 		},
 	
 	}
@@ -220,6 +227,7 @@ export default {
 .yao_bottom {
 	margin: 45rpx 0 50rpx;
 	text-align: center;
+	padding-bottom: 30rpx;
 }
 .yao_bottom button {
 	height: 80rpx;

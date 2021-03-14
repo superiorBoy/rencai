@@ -39,7 +39,7 @@
 				<image src="../../static/qy_img/daimian.png" mode=""></image>
 				面试待接受
 			</view>
-			<text class="chakan lan_26">查看</text>
+			<text class="chakan lan_26" @click="mianshi_xq">查看</text>
 		</view>
 
 		<view class="chat_body " @click="tan_hide()">
@@ -139,7 +139,7 @@
 				<text class="lan_22">未收到邮件？</text>
 			</view>
 
-			<view class="shou_jianli">
+			<view class="shou_jianli" @click="jianli_xq">
 				<view class="shou_jianli_top">
 					<image src="../../static/qy_img/jianli.png" mode=""></image>
 					<view class="shou_jianli_right hei_26">张珊珊-3年WEB前端开发工程师.PDF</view>
@@ -430,8 +430,12 @@ export default {
 				url: 'mian_yaoqing'
 			});
 		},
-		tongyi_jianli() {},
-		jvjue_jianli() {},
+		tongyi_jianli() {
+			console.log('同意对方发送简历')
+		},
+		jvjue_jianli() {
+			console.log('拒绝对方发送简历')
+		},
 		replace_em(str) {
 			str = str.replace(/\</g, '&lt;');
 			str = str.replace(/\>/g, '&gt;');
@@ -476,6 +480,16 @@ export default {
 		go_richeng(){
 			uni.navigateTo({
 				url:'mian_richeng'
+			})
+		},
+		jianli_xq(){
+			uni.navigateTo({
+				url:'jianli_xq'
+			})
+		},
+		mianshi_xq(){
+			uni.navigateTo({
+				url:'mian_xq'
 			})
 		}
 	}

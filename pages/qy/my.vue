@@ -16,7 +16,7 @@
 						</view>
 						<view class=" bai_20"><text>草根技术</text> <text class="zhiwei">人事经理</text></view>
 					</view>
-					<!-- <view class="my_top_weoienglu hei_26" >
+					<!-- <view class="my_top_weoienglu bai_26" >
 						<navigator url="login" class="go_denglu">登录</navigator>
 						<navigator url="../index/zhuce?state=2" class="go_denglu">注册</navigator>
 					</view> -->
@@ -46,28 +46,26 @@
 				<image src="../../static/qy_img/kaitong.png" mode="widthFix"></image>
 			</view>
 			
-			
 			</view>
-
-			
 
 			<view class="my_bottom">
 		
 		<view class="my_zhiwei">
 
-			<view class="my_zhiwei_item hei_24" @click="tiaozhuan('zhiwei_guanli')">
+			<view class="my_zhiwei_item hei_24" @click="shenfen==1?tiaozhuan('zhiwei_guanli'):go_zaixian_zhiwei()">
 				<image src="../../static/qy_img/my_top1.png" mode=""></image>
 				<view class="">
-					职位管理
+					{{shenfen==1?'职位管理':'在线职位'}}
 				</view>
 			</view>
+			
 			<view class="my_zhiwei_item hei_24" @click="tiaozhuan('fabu_zhiwei')">
 				<image src="../../static/qy_img/my_top2.png" mode=""></image>
 				<view class="">
 					发布职位
 				</view>
 			</view>
-			<view class="my_zhiwei_item hei_24" @click="tiaozhuan('jiben_xinxi')">
+			<view class="my_zhiwei_item hei_24" @click="tiaozhuan('my_gongsi')">
 				<image src="../../static/qy_img/my_top3.png" mode=""></image>
 				<view class="">
 					公司资料
@@ -112,19 +110,23 @@
 					<view class="my_title hei_30_bold">在线工具</view>
 					<view class="my_list">
 						<navigator url="geren_xinxi" class="zhanghao_item">
-							<image src="../../static/qy_img/zaixian1.png" mode="" style="width: 74rpx;height: 74rpx;"></image>
+							<image src="../../static/qy_img/zaixian1.png" mode="" style="width: 74rpx;height: 74rpx;" v-if="shenfen==1"></image>
+							<image src="../../static/qy_img/zaixian1_my.png" mode="" style="width: 74rpx;height: 74rpx;" v-if="shenfen==2"></image>
 							<view class="hui_24 ">群发消息</view>
 						</navigator>
 						<view class="zhanghao_item" >
-							<image src="../../static/qy_img/zaixian2.png" mode="" style="width: 74rpx;height: 74rpx;"></image>
+							<image src="../../static/qy_img/zaixian2.png" mode="" style="width: 74rpx;height: 74rpx;" v-if="shenfen==1"></image>
+							<image src="../../static/qy_img/zaixian2_my.png" mode="" style="width: 74rpx;height: 74rpx;" v-if="shenfen==2"></image>
 							<view class="hui_24 ">招聘道具</view>
 						</view>
 						<view class="zhanghao_item" >
-							<image src="../../static/qy_img/zaixian3.png" mode="" style="width: 74rpx;height: 74rpx;"></image>
+							<image src="../../static/qy_img/zaixian3.png" mode="" style="width: 74rpx;height: 74rpx;" v-if="shenfen==1"></image>
+							<image src="../../static/qy_img/zaixian3_my.png" mode="" style="width: 74rpx;height: 74rpx;" v-if="shenfen==2"></image>
 							<view class="hui_24 ">招聘数据</view>
 						</view>
 						<view class="zhanghao_item" @click="tiaozhuan('huan_shenfen')">
-							<image src="../../static/qy_img/zaixian4.png" mode="" style="width: 74rpx;height:74rpx;"></image>
+							<image src="../../static/qy_img/zaixian4.png" mode="" style="width: 74rpx;height:74rpx;" v-if="shenfen==1"></image>
+							<image src="../../static/qy_img/zaixian4_my.png" mode="" style="width: 74rpx;height:74rpx;" v-if="shenfen==2"></image>
 							<view class="hui_24 ">切换身份</view>
 						</view>
 					</view>
@@ -166,7 +168,8 @@ export default {
 	},
 	data() {
 		return {
-			currentPage: 'qy/my'
+			currentPage: 'qy/my',
+			shenfen:1
 		};
 	},
 	onLoad() {},
@@ -175,6 +178,9 @@ export default {
 			uni.navigateTo({
 				url:url
 			})
+		},
+		go_zaixian_zhiwei(){
+			console.log("在线职位")
 		}
 	}
 };

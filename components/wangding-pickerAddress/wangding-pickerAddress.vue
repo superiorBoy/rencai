@@ -5,9 +5,8 @@
 </template>
 
 <script>
-	import AllAddress from './data.js'
+	import AllAddress from '../../common/data.js'
 	let selectVal = ['','','']
-	
 	export default {
 		data() {
 			return{
