@@ -5,7 +5,7 @@
 			<view class="head_center bai_38">前端工程师</view>
 			<view class=" head_right hei_30_bold"></view>
 		</view>
-		<view class="index_shaixuan hei_26">
+		<view class="index_shaixuan hei_26"  v-if="!zanwu">
 			<view class="index_shaixuan_left">
 				<view class="index_shaixuan_left_item">推荐</view>
 				<view class="index_shaixuan_left_item">
@@ -15,16 +15,18 @@
 				<view class="index_shaixuan_left_item">最新</view>
 			</view>
 			<view class="index_shaixuan_right hui_24">
-				<view class="index_shaixuan_right_item">杭州</view>
-				<view class="index_shaixuan_right_item">
+				<pickerAddress2 @change="city_change">
+				<view class="index_shaixuan_right_item">{{city}}</view>
+				</pickerAddress2>
+				<view class="index_shaixuan_right_item" @click="shaixuan">
 					筛选
 					<text class="hongdian"></text>
 				</view>
 			</view>
 		</view>
 		<view class="tabber_body index_body">
-			<view class="index_list">
-				<view class="index_item" v-for="item in 10">
+			<view class="index_list" v-if="!zanwu">
+				<view class="index_item" v-for="item in 10" @click="go_xq()">
 					<view class="index_item_top">
 						<view class="index_item_top_left">
 							<view class="index_item_name hei_34_bold">李雪夏</view>
@@ -56,6 +58,20 @@
 					</view>
 				</view>
 			</view>
+			
+			<view class="zanwu"v-if="zanwu">
+				<image src="../../static/qy_img/zhiwei_zanwu.png" mode="widthFix"></image>
+				<view class="hui_30">
+					目前没有在线职位
+				</view>
+				<view class="qian_24 zanwu_txt">
+					发布职位才能获取精准的人才推荐
+				</view>
+				
+				<button type="" class="bai_30" @click="fabu">发布新职位</button>
+			</view>
+			
+			
 		</view>
 		<tabBar :currentPage="currentPage" ref="ls_mainindex"></tabBar>
 	</view>
@@ -63,23 +79,47 @@
 
 <script>
 import tabBar from '@/components/tabbar/tabbar.vue';
+import pickerAddress2 from '@/components/wangding-pickerAddress/wangding-pickerAddress.vue';
 export default {
 	components: {
-		tabBar
+		tabBar,
+		pickerAddress2
 	},
 	data() {
 		return {
-			currentPage: 'qy/index'
+			currentPage: 'qy/index',
+			zanwu:false,
+			city:'杭州'
 		};
 	},
 	onLoad() {},
-	methods: {}
+	methods: {
+		fabu(){
+			uni.navigateTo({
+				url:'fabu_zhiwei'
+			})
+		},
+		shaixuan(){
+			uni.navigateTo({
+				url:'shaixuan'
+			})
+		},
+		city_change(e) {
+			console.log(e);
+			this.city =e.data[1];
+		},
+		go_xq(){
+			uni.navigateTo({
+				url:'jianli_xq'
+			})
+		}
+	}
 };
 </script>
 
 <style>
 page {
-	background-color: #f8f8f8;
+	/* background-color: #f8f8f8; */
 }
 .head {
 	background-color: #00c6c9;
@@ -128,15 +168,26 @@ page {
 	padding: 0 6rpx;
 }
 .index_shaixuan_right_item {
-	width: 94rpx;
+	/* width: 94rpx; */
+	background-color: #f5f5f5;
 	height: 48rpx;
-	background: url(../../static/qy_img/index_shaixuan.png) no-repeat;
-	background-size: 100% 100%;
 	border-radius: 5rpx;
 	margin-left: 20rpx;
 	line-height: 48rpx;
 	text-align: center;
 	position: relative;
+	padding: 0 20rpx 0 10rpx;
+}
+.index_shaixuan_right_item::before{
+	content: '';
+	display: inline-block;
+	width: 12rpx;
+	height: 10rpx;
+	background: url(../../static/qy_img/index_before.png) no-repeat;
+	background-size: 100% 100%;
+  position: absolute;
+  bottom: 7rpx;
+  right: 7rpx;
 }
 .hongdian {
 	display: inline-block;
@@ -146,7 +197,7 @@ page {
 	border-radius: 100%;
 	position: absolute;
 	top: 7rpx;
-	right: 22rpx;
+	right: 16rpx;
 }
 .index_item_top_left_right {
 	width: 84rpx;
@@ -177,6 +228,7 @@ page {
 	margin-bottom: 20rpx;
 	background-color: #ffffff;
 	padding: 30rpx 30rpx;
+	border-bottom: 20rpx solid #f8f8f8;
 }
 .index_item_yaoqiu {
 	margin-top: 10rpx;
@@ -245,5 +297,23 @@ page {
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 2;
 	overflow: hidden;
+}
+	.zanwu{
+		text-align: center;
+	}
+.zanwu image{
+		width: 366rpx;
+		height: 199rpx;
+		margin: 200rpx 0 130rpx;
+}
+.zanwu button{
+		width: 450rpx;
+		height: 80rpx;
+		background-color: #00c6c9;
+		border-radius: 10rpx;
+		line-height: 80rpx;
+}
+.zanwu_txt{
+	margin: 20rpx 0 100rpx;
 }
 </style>

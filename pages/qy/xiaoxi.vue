@@ -61,7 +61,7 @@
 		<view class="tabber_body zi_body" v-if="qiehuan_active==2">
 			
 			<view class="xingqu_list">
-				<view class="xingqu_item" v-for=" item in 5">
+				<view class="xingqu_item" v-for=" item in 5" @click="go_xq()">
 					<view class="xingqu_item_top">
 						<view class="xingqu_item_top_left">
 							<image src="@/static/qy_img/tx.png" mode="" class="tx"></image>
@@ -107,8 +107,8 @@ export default {
 				{ text: '已约面试', new: false },
 				{ text: '不合适', new: false }
 			],
-			tab_active: 2,
-			qiehuan_active:2
+			tab_active: 1,
+			qiehuan_active:1
 		};
 	},
 	onLoad() {},
@@ -124,6 +124,11 @@ export default {
 			uni.navigateTo({
 				url: 'chat'
 			});
+		},
+		go_xq(){
+			uni.navigateTo({
+				url:'jianli_xq'
+			})
 		}
 	}
 };

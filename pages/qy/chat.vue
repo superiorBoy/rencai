@@ -6,7 +6,7 @@
 				<view class="hei_30_bold">张珊珊</view>
 				<view class="zhiwei hei_24">前端开发工程师</view>
 			</view>
-			<view class=" head_right hei_30_bold"><image src="../../static/qy_img/rili.png" mode="" style="width: 34rpx;height: 34rpx;"></image></view>
+			<view class=" head_right hei_30_bold"><image src="../../static/qy_img/rili.png" mode="" style="width: 34rpx;height: 34rpx;" @click="go_richeng"></image></view>
 		</view>
 		<view class="chat_tab hui_22">
 			<view class="chat_tab_item" @click="tan_jianli">
@@ -472,6 +472,11 @@ export default {
 		jia() {
 			this.chuangkou = !this.chuangkou;
 			this.isShowEmj = false;
+		},
+		go_richeng(){
+			uni.navigateTo({
+				url:'mian_richeng'
+			})
 		}
 	}
 };

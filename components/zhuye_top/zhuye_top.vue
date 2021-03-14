@@ -3,7 +3,7 @@
 			<view class="zhuye_body_top">
 				<view class="zhuye_top_body">
 					<view class="zhuye_top_caozuo">
-						<image src="../../static/qy_img/bai_back.png" mode="" style="width: 22rpx;height: 41rpx;"></image> 
+						<image src="../../static/qy_img/bai_back.png" mode="" style="width: 22rpx;height: 41rpx;" @click="navigateBack()"></image> 
 						<image src="../../static/qy_img/bai_fenxiang.png" mode="" style="width:35rpx;height: 36rpx;"></image>
 					</view>
 					<view class="zhuye_top_tx">

@@ -21,19 +21,19 @@
 						<navigator url="../index/zhuce?state=2" class="go_denglu">注册</navigator>
 					</view> -->
 				</view>
-				<view class="my_top_right bai_24" >编辑 <image src="../../static/qy_img/my_r.png" mode="" ></image></view>
+				<view class="my_top_right bai_24" @click="tiaozhuan('zhuye')" >编辑 <image src="../../static/qy_img/my_r.png" mode="" ></image></view>
 			</view>
 			<view class="my_ziliao">
-				<view class="my_ziliao_item" >
+				<view class="my_ziliao_item" @click="tiaozhuan('xiaoxi')">
 					<view class="my_ziliao_item_top bai_34">20</view>
 					<view class="my_ziliao_item_bottom bai_22">沟通过</view>
 				</view>
-				<view class="my_ziliao_item" >
+				<view class="my_ziliao_item" @click="tiaozhuan('mian_jilu')">
 					<view class="my_ziliao_item_top bai_34">6</view>
 					<view class="my_ziliao_item_bottom bai_22">面试</view>
 				</view>
 			
-				<view class="my_ziliao_item" >
+				<view class="my_ziliao_item" @click="tiaozhuan('shoucang')">
 					<view class="my_ziliao_item_top bai_34">12</view>
 					<view class="my_ziliao_item_bottom bai_22">收藏</view>
 				</view>
@@ -61,20 +61,20 @@
 					职位管理
 				</view>
 			</view>
-			<view class="my_zhiwei_item hei_24">
+			<view class="my_zhiwei_item hei_24" @click="tiaozhuan('fabu_zhiwei')">
 				<image src="../../static/qy_img/my_top2.png" mode=""></image>
 				<view class="">
 					发布职位
 				</view>
 			</view>
-			<view class="my_zhiwei_item hei_24">
+			<view class="my_zhiwei_item hei_24" @click="tiaozhuan('jiben_xinxi')">
 				<image src="../../static/qy_img/my_top3.png" mode=""></image>
 				<view class="">
 					公司资料
 				</view>
 				<image src="../../static/qy_img/dai_wanshan.png" mode="" class="dai_wanshan"></image>
 			</view>
-			<view class="my_zhiwei_item hei_24">
+			<view class="my_zhiwei_item hei_24" @click="tiaozhuan('zhuye')">
 				<image src="../../static/qy_img/my_top4.png" mode=""></image>
 				<view class="">
 					个人资料
@@ -84,7 +84,7 @@
 		</view>
 		
 		<view class="my_caozuo">
-			<view class="my_caozuo_item">
+			<view class="my_caozuo_item" @click="tiaozhuan('search')">
 				<image src="../../static/qy_img/my_sousuo.png" mode="" style="width: 55rpx;height: 44rpx;"></image>
 				<view class="my_caozuo_item_right">
 					<view class="hei_26_bold ">
@@ -95,7 +95,7 @@
 					</view>
 				</view>
 			</view>
-			<view class="my_caozuo_item">
+			<view class="my_caozuo_item" @click="tiaozhuan('zhiding')">
 				<image src="../../static/qy_img/my_zhiwei.png" mode=""style="width: 42rpx;height: 44rpx;"></image>
 				<view class="my_caozuo_item_right">
 					<view class="hei_26_bold ">
@@ -123,7 +123,7 @@
 							<image src="../../static/qy_img/zaixian3.png" mode="" style="width: 74rpx;height: 74rpx;"></image>
 							<view class="hui_24 ">招聘数据</view>
 						</view>
-						<view class="zhanghao_item">
+						<view class="zhanghao_item" @click="tiaozhuan('huan_shenfen')">
 							<image src="../../static/qy_img/zaixian4.png" mode="" style="width: 74rpx;height:74rpx;"></image>
 							<view class="hui_24 ">切换身份</view>
 						</view>
@@ -133,7 +133,7 @@
 				<view class="my_guanli zhanghao_guanli">
 					<view class="my_title hei_30_bold">账号中心</view>
 					<view class="my_list">
-						<navigator url="geren_xinxi" class="zhanghao_item">
+						<navigator url="geren_xinxi" class="zhanghao_item" @click="tiaozhuan('geren')">
 							<image src="../../static/qy_img/zhanghao1.png" mode="" style="width: 40rpx;height: 32rpx;margin-bottom: 26rpx;"></image>
 							<view class="hui_24 ">个人信息</view>
 						</navigator>

@@ -4,6 +4,9 @@
 			"path": "pages/index/index"
 		},
 		{
+			"path": "pages/index/login_xuanze"
+		},
+		{
 			"path": "pages/qy/index"
 		},
 		{
@@ -18,6 +21,7 @@
 		{
 			"path": "pages/qy/fabu_success"
 		},
+		
 		{
 			"path": "pages/qy/zhiwei_guanli"
 		},
@@ -29,6 +33,24 @@
 		},
 		{
 			"path": "pages/qy/geren"
+		},
+		{
+			"path": "pages/qy/zhiding"
+		},
+		{
+			"path": "pages/qy/jiben_xinxi"
+		},
+		{
+			"path": "pages/qy/wanshan_xinxi"
+		},
+		{
+			"path": "pages/qy/huan_shenfen"
+		},
+		{
+			"path": "pages/qy/shaixuan"
+		},
+		{
+			"path": "pages/qy/my_gongsi"
 		},
 		{
 			"path": "pages/qy/mian_xq"
