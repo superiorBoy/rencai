@@ -106,33 +106,33 @@
 			</view>
 		</view>
 				
-           <view class="my_guanli zhanghao_guanli">
+           <view class="my_guanli">
 					<view class="my_title hei_30_bold">面试管理</view>
 					<view class="my_list">
 						<navigator url="geren_xinxi" class="zhanghao_item">
-							<image src="../../static/index_img/my_mianshi1.png" mode="" style="width: 74rpx;height: 74rpx;" ></image>
+							<image src="../../static/index_img/my_mianshi1.png" mode=""  ></image>
 							
 							<view class="hui_24 ">我的消息</view>
 						</navigator>
 						<view class="zhanghao_item" >
-							<image src="../../static/index_img/my_mianshi2.png" mode="" style="width: 74rpx;height: 74rpx;" ></image>
+							<image src="../../static/index_img/my_mianshi2.png" mode="" ></image>
 							
 							<view class="hui_24 ">面试记录</view>
 						</view>
 						<view class="zhanghao_item" >
-							<image src="../../static/index_img/my_mianshi3.png" mode="" style="width: 74rpx;height: 74rpx;" ></image>
+							<image src="../../static/index_img/my_mianshi3.png" mode=""  ></image>
 							
 							<view class="hui_24 ">浏览记录</view>
 						</view>
 						<view class="zhanghao_item" @click="tiaozhuan('huan_shenfen')">
-							<image src="../../static/index_img/my_mianshi4.png" mode="" style="width: 74rpx;height:74rpx;" ></image>
+							<image src="../../static/index_img/my_mianshi4.png" mode=""  ></image>
 							
 							<view class="hui_24 ">切换身份</view>
 						</view>
 					</view>
 				</view>
 					
-				<view class="my_guanli zhanghao_guanli">
+				<view class=" zhanghao_guanli">
 					<view class="my_title hei_30_bold">账号中心</view>
 					<view class="my_list">
 						<navigator url="geren_xinxi" class="zhanghao_item" @click="tiaozhuan('geren')">
@@ -205,7 +205,7 @@ export default {
 <style>
 
 page {
-	background-color: #f7f7f7;
+	/* background-color: #f7f7f7; */
 }
 
 .ls_tx {
@@ -220,7 +220,7 @@ page {
 	display: flex;
 }
 .my_top_body{
-	background-color: #20c0bf;
+	background-color: #00C6C9;
 }
 .my_top {
 	display: flex;
@@ -295,6 +295,10 @@ page {
 	background-color: #ffffff;
 	margin-top: 20rpx;
 	padding: 0 18rpx 40rpx;
+	margin-bottom: 30rpx;
+		box-shadow: 0px 0px 16px 0px 
+			rgba(158, 158, 158, 0.18);
+		border-radius: 10px;
 }
 
 
@@ -323,10 +327,23 @@ page {
 		box-shadow: 0rpx 0rpx 16rpx 0rpx 
 			rgba(158, 158, 158, 0.18);
 		border-radius: 10rpx;
+		
+		padding: 0 30rpx 40rpx;
+		
 }
+	
+
 .zhanghao_guanli image{
+	margin-bottom: 20rpx;
+	
+}
+
+.my_guanli image{
+		width: 74rpx;
+		height: 74rpx;
 	vertical-align: bottom;
 	margin-bottom: 20rpx;
+	 
 }
 .zhanghao_item {
 	width: 25%;
@@ -390,7 +407,7 @@ page {
 }
 .my_zhiwei_item{
 	text-align: center;
-	width: 25%;
+	width: 98rpx;
 	position: relative;
 	height: 130rpx;
 }

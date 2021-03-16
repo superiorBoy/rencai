@@ -60,6 +60,7 @@
 .hei_32_bold{font-size: 32rpx;color: #333333; font-weight: bold;}
 .hei_34_bold{font-size: 34rpx;color: #333333; font-weight: bold;}
 .hei_38_bold{font-size: 38rpx;color: #333333; font-weight: bold;}
+.hei_48_bold{font-size: 48rpx;color: #333333; font-weight: bold;}
 
 .hui_20{font-size: 20rpx;color: #666666;}
 .hui_21{font-size: 21rpx;color: #666666;}
@@ -184,4 +185,21 @@ button::after{
 	content: none !important;
 }
 
+.daoru_body uni-checkbox .uni-checkbox-input{
+		width: 46rpx;
+		height: 46rpx;
+		background-color: #FFFFFF !important;
+		border-color: #E8E8E8 !important;
+		border-radius: 100%;
+		margin: 0;
+}
+.daoru_body uni-checkbox .uni-checkbox-input.uni-checkbox-input-checked{
+	width: 46rpx;
+	height: 46rpx;
+	 background: url(@/static/index_img/daoru_xuanzhong.png) no-repeat;
+	 background-size: 100% 100%; 
+}
 
+.daoru_body uni-checkbox .uni-checkbox-input.uni-checkbox-input-checked:before{
+	content: none;
+}

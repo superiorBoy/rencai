@@ -64,7 +64,7 @@
 						</view>
 					</view>
 				</view>
-				<view class="xiaoxi_item">
+				<view class="xiaoxi_item" @click="go_chat">
 					<view class="xiaoxi_tx">
 						<image src="../../static/qy_img/tx.png" mode=""></image>
 						<!-- <text class="xiaoxi_num bai_22">99+</text> -->

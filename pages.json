@@ -13,6 +13,30 @@
 			"path": "pages/index/my"
 		},
 		{
+			"path": "pages/index/geren"
+		},
+		{
+			"path": "pages/index/guanli_changyong"
+		},
+		{
+			"path": "pages/index/add_changyong"
+		},
+		{
+			"path": "pages/index/zhiwei_xq"
+		},
+		{
+			"path": "pages/index/chat"
+		},
+		{
+			"path": "pages/index/xinxi_daoru"
+		},
+		{
+			"path": "pages/index/zhuye"
+		},
+		{
+			"path": "pages/index/biaoqian"
+		},
+		{
 			"path": "pages/index/login_xuanze"
 		},
 		{

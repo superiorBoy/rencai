@@ -132,6 +132,7 @@ export default {
 				url: 'chat'
 			});
 		},
+	
 		// 获取经纬度
 		getlocation() {
 			const that = this;

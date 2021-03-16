@@ -125,7 +125,7 @@ export default {
 		overflow: hidden;
 		text-overflow:ellipsis;
 		white-space: nowrap;
-		width: 200rpx;
+		max-width: 200rpx;
 		}
 .zhuye_top_guanzhu{
 	display: flex;
