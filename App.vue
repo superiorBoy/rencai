@@ -51,13 +51,16 @@
 .head_center{text-align: center;}
 .head_right{text-align: right;}
 .head_back image{width: 22rpx;height: 41rpx;}
-view,page{
+view,page,div{
 	max-width: 750px;
 }
-page{
+page,.uni-tabbar{
 	margin: 0 auto;
 }
-
+.uni-tabbar__icon{
+	height: 20px !important;
+	width: 20px !important;
+}
 	
 /* app沉浸式配置	 */
 /* APP-PLUS */
@@ -75,6 +78,15 @@ page{
 	  
   }
   .chat_body{
+	  
+  }
+  .faxian_body{
+	  
+  }
+  .liaotian_body{
+	  
+  }
+  .xiaoxi_hudong_body{
 	  
   }
    

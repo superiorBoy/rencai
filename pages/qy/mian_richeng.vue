@@ -71,7 +71,7 @@ export default {
 	data() {
 		return {
 			check: [],
-			is_mianshi: false
+			is_mianshi: true
 		};
 	},
 	onLoad() {

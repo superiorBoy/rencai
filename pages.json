@@ -4,6 +4,15 @@
 			"path": "pages/index/index"
 		},
 		{
+			"path": "pages/index/faxian"
+		},
+		{
+			"path": "pages/index/xiaoxi"
+		},
+		{
+			"path": "pages/index/my"
+		},
+		{
 			"path": "pages/index/login_xuanze"
 		},
 		{
@@ -84,5 +93,38 @@
 	"globalStyle": {
 		"titleNView":false,
 		"navigationBarTextStyle": "black"
-	}
+	},
+	"tabBar": {
+			"color":"#8a8a8a",
+			"selectedColor":"#00c6c9",
+			"borderStyle":"black",
+			"backgroundColor":"#ffffff",
+			"list": [
+				{
+					"pagePath":"pages/index/index",
+					"text":"职位",
+					"iconPath":"static/index_img/tabber1.png",
+					"selectedIconPath":"static/index_img/tabber1_on.png"
+				},
+				{
+					"pagePath":"pages/index/faxian",
+					"text":"发现",
+					"iconPath":"static/index_img/tabber2.png",
+					"selectedIconPath":"static/index_img/tabber2_on.png"
+				},
+				{
+					"pagePath":"pages/index/xiaoxi",
+					"text":"消息",
+					"iconPath":"static/index_img/tabber3.png",
+					"selectedIconPath":"static/index_img/tabber3_on.png"
+				},
+				{
+					"pagePath":"pages/index/my",
+					"text":"我的",
+					"iconPath":"static/index_img/tabber4.png",
+					"selectedIconPath":"static/index_img/tabber4_on.png"
+				}
+			
+			]	
+		 }
 }

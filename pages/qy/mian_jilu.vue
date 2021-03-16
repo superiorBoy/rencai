@@ -3,7 +3,7 @@
 		<view class="head">
 			<view class="head_back"><image src="../../static/qy_img/back.png" mode="" @click="navigateBack"></image></view>
 			<view class="head_center hei_38_bold">面试记录</view>
-			<view class=" head_right hei_30_bold"><image src="../../static/qy_img/tixing.png" mode="" style="width: 36rpx;height:40rpx ;"></image></view>
+			<view class=" head_right hei_30_bold"><image src="../../static/qy_img/tixing.png" mode="" style="width: 36rpx;height:40rpx ;" @click="go_richeng"></image></view>
 		</view>
 		<view class="tab_top hui_26">
 			<text v-for="(item, index) in tab_arry" :class="['', index == active ? 'zhiwei_active' : '']" @click="qiehuan(index)">{{ item }}</text>
@@ -84,6 +84,11 @@ export default {
 		go_xq(){
 			uni.navigateTo({
 				url:'mian_xq'
+			})
+		},
+		go_richeng(){
+			uni.navigateTo({
+				url:'mian_richeng'
 			})
 		}
 	}
