@@ -16,6 +16,18 @@
 			"path": "pages/index/geren"
 		},
 		{
+			"path": "pages/index/guanli_fujian"
+		},
+		{
+			"path": "pages/index/guanjian_ci"
+		},
+		{
+			"path": "pages/index/add_jiaoyu"
+		},
+		{
+			"path": "pages/index/liaotian_zhezhi"
+		},
+		{
 			"path": "pages/index/guanli_changyong"
 		},
 		{
@@ -23,6 +35,12 @@
 		},
 		{
 			"path": "pages/index/zhiwei_xq"
+		},
+		{
+			"path": "pages/index/zhiwei_xq_tx"
+		},
+		{
+			"path": "pages/index/yi_goutong"
 		},
 		{
 			"path": "pages/index/chat"

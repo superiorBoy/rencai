@@ -25,7 +25,7 @@
 					筛选
 					<text class="hongdian"></text>
 				</view>
-				<view class="index_shaixuan_right_item" @click="shaixuan">
+				<view class="index_shaixuan_right_item" @click="guanjianci">
 					关键词
 					<text class="hongdian"></text>
 				</view>
@@ -33,7 +33,7 @@
 		</view>
 		<view class=" index_body">
 			<view class="index_list" >
-				<view class="index_item" v-for="item in 5">
+				<view class="index_item" v-for="item in 5" @click="zhiwei_xq()">
 					<view class="index_item_top" >
 						<view class="index_item_top_left" >
 							<view class="index_item_zhiwie hei_34_bold" >
@@ -113,14 +113,14 @@ export default {
 			});
 			uni.stopPullDownRefresh();
 		},
-		fabu() {
-			uni.navigateTo({
-				url: 'fabu_zhiwei'
-			});
-		},
 		shaixuan() {
 			uni.navigateTo({
-				url: 'shaixuan'
+				url: '../qy/shaixuan'
+			});
+		},
+		guanjianci(){
+			uni.navigateTo({
+				url: 'guanjian_ci'
 			});
 		},
 		city_change(e) {
@@ -130,6 +130,11 @@ export default {
 		go_chat() {
 			uni.navigateTo({
 				url: 'chat'
+			});
+		},
+		zhiwei_xq(){
+			uni.navigateTo({
+				url: 'zhiwei_xq'
 			});
 		},
 	

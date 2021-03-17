@@ -44,6 +44,7 @@
 .hei_31{font-size: 31rpx;color: #333333;}
 .hei_32{font-size: 32rpx;color: #333333;}
 .hei_34{font-size: 34rpx;color: #333333;}
+.hei_36{font-size: 36rpx;color: #333333;}
 
 .hei_20_bold{font-size: 20rpx;color: #333333; font-weight: bold;}
 .hei_21_bold{font-size: 21rpx;color: #333333; font-weight: bold;}
@@ -59,6 +60,7 @@
 .hei_31_bold{font-size: 31rpx;color: #333333; font-weight: bold;}
 .hei_32_bold{font-size: 32rpx;color: #333333; font-weight: bold;}
 .hei_34_bold{font-size: 34rpx;color: #333333; font-weight: bold;}
+.hei_36_bold{font-size: 36rpx;color: #333333; font-weight: bold;}
 .hei_38_bold{font-size: 38rpx;color: #333333; font-weight: bold;}
 .hei_48_bold{font-size: 48rpx;color: #333333; font-weight: bold;}
 
@@ -104,6 +106,7 @@
 .qian_30{font-size: 30rpx;color: #999999;}
 .qian_31{font-size: 31rpx;color: #999999;}
 .qian_32{font-size: 32rpx;color: #999999;}
+.qian_34{font-size: 34rpx;color: #999999;}
 
 .qian_20_bold{font-size: 20rpx;color: #999999; font-weight: bold;}
 .qian_21_bold{font-size: 21rpx;color: #999999; font-weight: bold;}
@@ -118,6 +121,7 @@
 .qian_30_bold{font-size: 30rpx;color: #999999; font-weight: bold;}
 .qian_31_bold{font-size: 31rpx;color: #999999; font-weight: bold;}
 .qian_32_bold{font-size: 32rpx;color: #999999; font-weight: bold;}
+.qian_34_bold{font-size: 34rpx;color: #999999; font-weight: bold;}
 
 .lan_20{font-size: 20rpx;color: #00c6c9;}
 .lan_21{font-size: 21rpx;color: #00c6c9;}
@@ -133,6 +137,7 @@
 .lan_31{font-size: 31rpx;color: #00c6c9;}
 .lan_32{font-size: 32rpx;color: #00c6c9;}
 .lan_34{font-size: 34rpx;color: #00c6c9;}
+.lan_36{font-size: 36rpx;color: #00c6c9;}
 
 .lan_20_bold{font-size: 20rpx;color: #00c6c9; font-weight: bold;}
 .lan_21_bold{font-size: 21rpx;color: #00c6c9; font-weight: bold;}
@@ -148,6 +153,7 @@
 .lan_31_bold{font-size: 31rpx;color: #00c6c9; font-weight: bold;}
 .lan_32_bold{font-size: 32rpx;color: #00c6c9; font-weight: bold;}
 .lan_34_bold{font-size: 34rpx;color: #00c6c9; font-weight: bold;}
+.lan_36_bold{font-size: 36rpx;color: #00c6c9; font-weight: bold;}
 
 .hong_20{font-size: 20rpx;color: #f43a51;}
 .hong_21{font-size: 21rpx;color: #f43a51;}

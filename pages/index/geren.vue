@@ -26,7 +26,7 @@
 				<view class="geren_item">
 					<view class="geren_item_top">
 						<view class="hui_26 geren_item_title">姓名</view>
-						<view class="hei_32"><input type="text" value="" v-model="name" /></view>
+						<view class="hei_32"><input type="text" value="" v-model="name" class="hei_32"/></view>
 					</view>
 					<image src="../../static/qy_img/go_right.png" mode="" class="go_right"></image>
 				</view>
@@ -51,7 +51,7 @@
 				<view class="geren_item">
 					<view class="geren_item_top">
 						<view class="hui_26 geren_item_title">微信号</view>
-						<view class="hei_32"><input type="text" value="" v-model="weixin"/></view>
+						<view class="hei_32"><input type="text" value="" v-model="weixin" class="hei_32"/></view>
 					</view>
 					<image src="../../static/qy_img/go_right.png" mode="" class="go_right"></image>
 				</view>
@@ -71,7 +71,7 @@
 				<view class="geren_item">
 					<view class="geren_item_top">
 						<view class="hui_26 geren_item_title">邮箱</view>
-						<view class="hei_32"> <input type="text" value="" v-model="youxiang" /></view>
+						<view class="hei_32"> <input type="text" value="" v-model="youxiang" class="hei_32"/></view>
 					</view>
 					<image src="../../static/qy_img/go_right.png" mode="" class="go_right"></image>
 				</view>
