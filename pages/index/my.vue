@@ -28,7 +28,7 @@
 					<view class="my_ziliao_item_top bai_34">20</view>
 					<view class="my_ziliao_item_bottom bai_22">沟通过</view>
 				</view>
-				<view class="my_ziliao_item" @click="tiaozhuan('mian_jilu')">
+				<view class="my_ziliao_item" @click="tiaozhuan('mian_richeng')">
 					<view class="my_ziliao_item_top bai_34">6</view>
 					<view class="my_ziliao_item_bottom bai_22">待面试</view>
 				</view>
@@ -65,7 +65,7 @@
 					求职意向
 				</view>
 			</view>
-			<view class="my_zhiwei_item hei_24" @click="tiaozhuan('my_gongsi')">
+			<view class="my_zhiwei_item hei_24" @click="tiaozhuan('liaotian_shezhi')">
 				<image src="../../static/index_img/my_top3.png" mode="" style="width: 70rpx;height: 78rpx;"></image>
 				<view class="my_zhiwei_item_bottom">
 					隐私设置

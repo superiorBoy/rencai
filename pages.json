@@ -19,13 +19,28 @@
 			"path": "pages/index/guanli_fujian"
 		},
 		{
+			"path": "pages/index/huan_shenfen"
+		},
+		{
+			"path": "pages/index/qiwang_hangye"
+		},
+		{
 			"path": "pages/index/guanjian_ci"
 		},
 		{
 			"path": "pages/index/add_jiaoyu"
 		},
 		{
-			"path": "pages/index/liaotian_zhezhi"
+			"path": "pages/index/liaotian_shezhi"
+		},
+		{
+			"path": "pages/index/shezhi_beizhu"
+		},
+		{
+			"path": "pages/index/liushui"
+		},
+		{
+			"path": "pages/index/mian_richeng"
 		},
 		{
 			"path": "pages/index/guanli_changyong"

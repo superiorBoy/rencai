@@ -18,10 +18,10 @@
 				<image src="../../static/qy_img/hei_right.png" mode="" class="hei_right"></image>
 			</view>
 			<view class="shezhi_center hei_30">
-				<view class="shezhi_list">
+				<navigator url="shezhi_beizhu" class="shezhi_list">
 					<text>设置备注</text>
 					<image src="../../static/qy_img/hei_right.png" mode="" class="hei_right"></image>
-				</view>
+				</navigator>
 				<view class="shezhi_list">
 					<text>置顶联系人</text>
 					<switch checked="true" @change="zhiding_change" color="#00c6c9" />
