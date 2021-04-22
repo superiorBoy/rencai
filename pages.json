@@ -25,7 +25,22 @@
 			"path": "pages/index/qiwang_hangye"
 		},
 		{
+			"path": "pages/index/qiwang_zhiwei",
+			"style": {
+				"scrollIndicator":"none", // 该页不显示滚动条  
+			    "app-plus":{  
+			        "scrollIndicator":"none" // 在该页APP平台不显示滚动条  
+			    } 
+			}
+		},
+		{
 			"path": "pages/index/guanjian_ci"
+		},
+		{
+			"path": "pages/index/all_mianshi"
+		},
+		{
+			"path": "pages/index/up_jianli"
 		},
 		{
 			"path": "pages/index/add_jiaoyu"
