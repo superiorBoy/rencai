@@ -24,7 +24,7 @@
 					</view>
 					<view class="up_item_right"><image src="../../static/qy_img/go_right.png" mode=""></image></view>
 				</view>
-				<view class="up_item">
+				<view class="up_item" @click="up">
 					<view class="up_item_left">
 						<image src="../../static/index_img/up_shouji.png" mode=""></image>
 						手机上传
@@ -47,7 +47,7 @@
 				</view>
 			</view>
 			
-			<view class="hei_34_bold">
+			<view class="hei_34_bold up_tishi">
 				使用专业级简历模板升级简历？
 			</view>
 			<view class="zhuanshu">
@@ -68,6 +68,11 @@
 					<image src="../../static/qy_img/hei_right.png" mode="" class="hei_right"></image>
 				</view>	
 			</view>	
+			<view class=" qian_24 tishi">
+				 <image src="../../static/index_img/fujian_tishi.png" mode=""></image>  附件简历在企业向你索取且经你同意，或是你主动发送时才会
+				提供给对方，企业将你转发给同事时，可能会将附件简历一并转
+				发。
+			</view>
 			
 		</view>
 	</view>
@@ -82,6 +87,11 @@ export default {
 	methods: {
 		navigateBack() {
 			uni.navigateBack();
+		},
+		up(){
+			uni.navigateTo({
+				url:'up_jianli_up'
+			})
 		}
 	}
 };
@@ -165,11 +175,19 @@ export default {
 }
 .tishi{
 	line-height: 40rpx;
+	padding-bottom: 50rpx;
 }
 .tishi image{
 		width: 22rpx;
 		height: 27rpx;
 		vertical-align: middle;
 		margin-right: 4rpx;
+}
+.hei_right{
+		width: 11rpx;
+		height: 20rpx;
+}
+.up_tishi{
+	margin: 100rpx 0 34rpx;
 }
 </style>

@@ -62,6 +62,13 @@ page,.uni-tabbar{
 	width: 20px !important;
 }
 	
+	.zi_body{
+		padding-top: 100rpx;
+	}
+	
+	
+	
+	
 /* app沉浸式配置	 */
 /* APP-PLUS */
 /* #ifdef APP-PLUS */

@@ -19,6 +19,9 @@
 			"path": "pages/index/guanli_fujian"
 		},
 		{
+			"path": "pages/index/shejiao_zhuye"
+		},
+		{
 			"path": "pages/index/huan_shenfen"
 		},
 		{
@@ -86,6 +89,12 @@
 		},
 		{
 			"path": "pages/index/login_xuanze"
+		},
+		{
+			"path": "pages/index/zuopin"
+		},
+		{
+			"path": "pages/index/up_jianli_up"
 		},
 		{
 			"path": "pages/qy/index",
