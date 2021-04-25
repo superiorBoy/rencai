@@ -12,6 +12,7 @@
 .bai_31{font-size: 31rpx;color: #FFFFFF;}
 .bai_32{font-size: 32rpx;color: #FFFFFF;}
 .bai_34{font-size: 34rpx;color: #FFFFFF;}
+.bai_36{font-size: 36rpx;color: #FFFFFF;}
 .bai_38{font-size: 38rpx;color: #FFFFFF;}
 .bai_39{font-size: 39rpx;color: #FFFFFF;}
 .bai_20_bold{font-size: 20rpx;color: #FFFFFF; font-weight: bold;}
@@ -108,6 +109,7 @@
 .qian_31{font-size: 31rpx;color: #999999;}
 .qian_32{font-size: 32rpx;color: #999999;}
 .qian_34{font-size: 34rpx;color: #999999;}
+.qian_36{font-size: 36rpx;color: #999999;}
 
 .qian_20_bold{font-size: 20rpx;color: #999999; font-weight: bold;}
 .qian_21_bold{font-size: 21rpx;color: #999999; font-weight: bold;}
@@ -210,3 +212,27 @@ button::after{
 .daoru_body uni-checkbox .uni-checkbox-input.uni-checkbox-input-checked:before{
 	content: none;
 }
+
+ uni-checkbox .uni-checkbox-input.uni-checkbox-input-checked:before,uni-radio .uni-radio-input.uni-radio-input-checked:before{
+ 	content: none !important;
+ }
+ 
+ uni-checkbox:not([disabled]) .uni-checkbox-input:hover,uni-radio:not([disabled]) .uni-radio-input:hover{
+ 	border-color: #E8E8E8 !important;
+ 	content: none !important;
+ }
+.shiming_list uni-radio .uni-radio-input{
+	width: 20rpx;
+		height: 20rpx;
+		background-color: #FFFFFF !important;
+		border-color: #E8E8E8 !important;
+}
+.shiming_list uni-radio .uni-radio-input.uni-radio-input-checked{
+	width: 20rpx;
+	height: 20rpx; 
+	background: url(@/static/index_img/shiming_radio.png) no-repeat;
+	background-size: 100% 100%;
+	 }
+	 .uni-picker-container .uni-picker-action.uni-picker-action-confirm{
+	 	color: #00c6c9;
+	 }

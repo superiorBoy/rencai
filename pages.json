@@ -16,6 +16,27 @@
 			"path": "pages/index/geren"
 		},
 		{
+			"path": "pages/index/shiming_renzheng"
+		},
+		{
+			"path": "pages/index/ceshi"
+		},
+		{
+			"path": "pages/index/qianbao"
+		},
+		{
+			"path": "pages/index/add_gongzuo"
+		},
+		{
+			"path": "pages/index/qiuzhi_qiwang"
+		},
+		{
+			"path": "pages/index/add_xiangmu"
+		},
+		{
+			"path": "pages/index/huiyuan"
+		},
+		{
 			"path": "pages/index/guanli_fujian"
 		},
 		{

@@ -114,7 +114,7 @@
 							
 							<view class="hui_24 ">我的消息</view>
 						</navigator>
-						<view class="zhanghao_item" >
+						<view class="zhanghao_item" @click="tiaozhuan('all_mianshi')">
 							<image src="../../static/index_img/my_mianshi2.png" mode="" ></image>
 							
 							<view class="hui_24 ">面试记录</view>
@@ -139,11 +139,11 @@
 							<image src="../../static/index_img/my_zhanghu1.png" mode="" style="width: 34rpx;height: 38rpx;"></image>
 							<view class="hui_24 ">个人信息</view>
 						</navigator>
-						<view class="zhanghao_item" >
+						<view class="zhanghao_item" @click="tiaozhuan('shiming_renzheng')">
 							<image src="../../static/index_img/my_zhanghu2.png" mode="" style="width: 38rpx;height: 36rpx;"></image>
 							<view class="hui_24 ">实名认证</view>
 						</view>
-						<view class="zhanghao_item" >
+						<view class="zhanghao_item" @click="tiaozhuan('qianbao')">
 							<image src="../../static/index_img/my_zhanghu3.png" mode="" style="width: 37rpx;height: 37rpx;"></image>
 							<view class="hui_24 ">我的钱包</view>
 						</view>
