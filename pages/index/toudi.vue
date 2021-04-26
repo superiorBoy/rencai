@@ -2,7 +2,7 @@
 	<view class="body">
 		<view class="head">
 			<view class="head_back"><image src="../../static/qy_img/back.png" mode="" @click="navigateBack"></image></view>
-			<view class="head_center hei_38_bold">沟通过</view>
+			<view class="head_center hei_38_bold">已投递</view>
 			<view class=" head_right hei_30_bold"></view>
 		</view>
 
@@ -19,14 +19,6 @@
 					<view class="hudong_item_gongsi qian_28">
 						<text>浙江大华科技</text>
 						
-					</view>
-					<view class="hudong_item_yaoqiu qian_24">
-						<view>
-							<text>杭州</text>
-
-						</view>
-						<view>3-5年</view>
-						<view>本科</view>
 					</view>
 					<view class="hudong_item_bottom">
 						<view class="hudong_item_bottom_left qian_24">
@@ -45,23 +37,14 @@
 					<view class="hudong_item_zhiwei">
 						<text class="hei_34_bold">WEB前端工程师</text>
 						<text class="lan_30_bold">
-							12-24K ·
-							<text class="duoxin">14薪</text>
+							12-24K/月 ·<text class="duoxin">14薪</text>
 						</text>
 					</view>
 					<view class="hudong_item_gongsi hei_28">
 						<text>浙江大华科技</text>
 						
 					</view>
-					<view class="hudong_item_yaoqiu hui_24">
-						<view>
-							<text>杭州</text>
-							<text>余杭区</text>
-							<text>五常</text>
-						</view>
-						<view>3-5年</view>
-						<view>本科</view>
-					</view>
+
 					<view class="hudong_item_bottom">
 						<view class="hudong_item_bottom_left hei_24">
 							<view class="zhao_tx">
@@ -76,6 +59,9 @@
 					</view>
 				</view>
 			</view>
+<!-- 			<view class="tishi hei_26">
+				仅显示最近一年的数据，最多200个~
+			</view> -->
 		</view>
 	</view>
 </template>
@@ -125,7 +111,9 @@ export default {
 
 <style>
 
-
+.head_center{
+	width: 50%;
+}
 .tongzhi {
 	width: 34rpx;
 	height: 39rpx;
@@ -262,7 +250,7 @@ export default {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	margin: 20rpx 0 30rpx;
+	margin: 20rpx 0 0rpx;
 }
 .hudong_item_zhiwei {
 	display: flex;
@@ -441,5 +429,9 @@ export default {
 }
 .xiaoxi_name{
 	 
+}
+.tishi{
+	text-align: center;
+	padding: 40rpx 0 100rpx;
 }
 </style>

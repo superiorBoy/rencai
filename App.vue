@@ -32,6 +32,10 @@
 
 <style>
 	@import url("./common/font.css");
+@font-face {
+	font-family:'zidingyi';
+	src: url('./common/Pacifico.ttf');
+}
 	/*每个页面公共css */
 .head{
 	display: flex;
@@ -65,7 +69,9 @@ page,.uni-tabbar{
 	.zi_body{
 		padding-top: 100rpx;
 	}
-	
+.calendar-list{
+	top: 100rpx;
+}	
 	
 	
 	

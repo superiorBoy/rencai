@@ -2,7 +2,7 @@
 	<view class="body">
 		<view class="head">
 			<view class="head_back"><image src="../../static/qy_img/back.png" mode="" @click="navigateBack"></image></view>
-			<view class="head_center hei_38_bold">沟通过</view>
+			<view class="head_center hei_38_bold">我收藏的职位</view>
 			<view class=" head_right hei_30_bold"></view>
 		</view>
 
@@ -45,8 +45,7 @@
 					<view class="hudong_item_zhiwei">
 						<text class="hei_34_bold">WEB前端工程师</text>
 						<text class="lan_30_bold">
-							12-24K ·
-							<text class="duoxin">14薪</text>
+							12-24K ·<text class="duoxin">14薪</text>
 						</text>
 					</view>
 					<view class="hudong_item_gongsi hei_28">
@@ -75,6 +74,9 @@
 						
 					</view>
 				</view>
+			</view>
+			<view class="tishi hei_26">
+				仅显示最近一年的数据，最多200个~
 			</view>
 		</view>
 	</view>
@@ -125,7 +127,9 @@ export default {
 
 <style>
 
-
+.head_center{
+	width: 50%;
+}
 .tongzhi {
 	width: 34rpx;
 	height: 39rpx;
@@ -441,5 +445,9 @@ export default {
 }
 .xiaoxi_name{
 	 
+}
+.tishi{
+	text-align: center;
+	padding: 40rpx 0 100rpx;
 }
 </style>

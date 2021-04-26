@@ -10,7 +10,7 @@
 					<view class="my_top_left_r" >
 						<view class="my_name ">
 							 <text class="bai_40_bold">张珊珊</text>
-							<view class="bai_24 my_name_jianli">
+							<view class="bai_24 my_name_jianli"  @click="tiaozhuan('jianli')">
 								<image src="../../static/index_img/my_jianli.png" mode=""></image>我的在线简历
 							</view>
 						</view>
@@ -24,7 +24,7 @@
 				<view class="my_top_right bai_24" ><image src="../../static/qy_img/tx.png" mode="" class="tx"></image> <image src="../../static/qy_img/nan.png" mode="" class="xingbie"></image></view>
 			</view>
 			<view class="my_ziliao">
-				<view class="my_ziliao_item" @click="tiaozhuan('xiaoxi')">
+				<view class="my_ziliao_item" @click="tiaozhuan('yi_goutong')">
 					<view class="my_ziliao_item_top bai_34">20</view>
 					<view class="my_ziliao_item_bottom bai_22">沟通过</view>
 				</view>
@@ -33,11 +33,11 @@
 					<view class="my_ziliao_item_bottom bai_22">待面试</view>
 				</view>
 			
-				<view class="my_ziliao_item" @click="tiaozhuan('shoucang')">
+				<view class="my_ziliao_item" @click="tiaozhuan('toudi')">
 					<view class="my_ziliao_item_top bai_34">12</view>
 					<view class="my_ziliao_item_bottom bai_22">已投递</view>
 				</view>
-				<view class="my_ziliao_item" >
+				<view class="my_ziliao_item" @click="tiaozhuan('shoucang')">
 					<view class="my_ziliao_item_top bai_34">8</view>
 					<view class="my_ziliao_item_bottom bai_22">收藏</view>
 				</view>
@@ -65,7 +65,7 @@
 					求职意向
 				</view>
 			</view>
-			<view class="my_zhiwei_item hei_24" @click="tiaozhuan('liaotian_shezhi')">
+			<view class="my_zhiwei_item hei_24" @click="tiaozhuan('yinsi')">
 				<image src="../../static/index_img/my_top3.png" mode="" style="width: 70rpx;height: 78rpx;"></image>
 				<view class="my_zhiwei_item_bottom">
 					隐私设置
@@ -147,7 +147,7 @@
 							<image src="../../static/index_img/my_zhanghu3.png" mode="" style="width: 37rpx;height: 37rpx;"></image>
 							<view class="hui_24 ">我的钱包</view>
 						</view>
-						<view class="zhanghao_item">
+						<view class="zhanghao_item"  @click="tiaozhuan('gaimima')">
 							<image src="../../static/index_img/my_zhanghu4.png" mode="" style="width:33rpx;height:37rpx;"></image>
 							<view class="hui_24 ">修改密码</view>
 						</view>

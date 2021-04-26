@@ -37,6 +37,33 @@
 			"path": "pages/index/huiyuan"
 		},
 		{
+			"path": "pages/index/xuanze_chengshi"
+		},
+		{
+			"path": "pages/index/yixiang"
+		},
+		{
+			"path": "pages/index/yinsi"
+		},
+		{
+			"path": "pages/index/shoucang"
+		},
+		{
+			"path": "pages/index/toudi"
+		},
+		{
+			"path": "pages/index/gaimima"
+		},
+		{
+			"path": "pages/index/youshi"
+		},
+		{
+			"path": "pages/index/add_zhengshu"
+		},
+		{
+			"path": "pages/index/jianli"
+		},
+		{
 			"path": "pages/index/guanli_fujian"
 		},
 		{

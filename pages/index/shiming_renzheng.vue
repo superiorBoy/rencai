@@ -102,7 +102,9 @@ export default {
 		// 		});
 	},
 	methods: {
-		navigateBack() {},
+		navigateBack() {
+			uni.navigateBack();
+		},
 		up_zhiye() {
 			let that = this;
 			uni.chooseImage({

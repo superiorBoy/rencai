@@ -79,6 +79,7 @@
 .hui_30{font-size: 30rpx;color: #666666;}
 .hui_31{font-size: 31rpx;color: #666666;}
 .hui_32{font-size: 32rpx;color: #666666;}
+.hui_34{font-size: 34rpx;color: #666666;}
 
 .hui_20_bold{font-size: 20rpx;color: #666666; font-weight: bold;}
 .hui_21_bold{font-size: 21rpx;color: #666666; font-weight: bold;}
@@ -236,3 +237,18 @@ button::after{
 	 .uni-picker-container .uni-picker-action.uni-picker-action-confirm{
 	 	color: #00c6c9;
 	 }
+	 
+	
+
+	.zhanshi_list uni-radio .uni-radio-input{
+		width: 30rpx;
+			height: 30rpx;
+			background-color: #FFFFFF !important;
+			border-color: #E8E8E8 !important;
+	}
+	.zhanshi_list uni-radio .uni-radio-input.uni-radio-input-checked{
+		width: 30rpx;
+		height: 30rpx; 
+		background: url(@/static/index_img/yinsi_radio.png) no-repeat;
+		background-size: 100% 100%;
+		}
