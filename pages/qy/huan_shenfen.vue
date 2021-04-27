@@ -33,7 +33,9 @@ export default {
 			uni.navigateBack()
 		},
 		qiehuan(){
-			
+			uni.reLaunch({
+				url:'../index/my'
+			})
 		}
 	
 	}

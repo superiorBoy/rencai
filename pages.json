@@ -34,6 +34,15 @@
 			"path": "pages/index/add_xiangmu"
 		},
 		{
+			"path": "pages/index/zhuce"
+		},
+		{
+			"path": "pages/index/login"
+		},
+		{
+			"path": "pages/index/zhaopin_zhuye"
+		},
+		{
 			"path": "pages/index/add_qiye"
 		},
 		{

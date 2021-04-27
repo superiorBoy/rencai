@@ -4,18 +4,20 @@
 			<view class="head_back"></view>
 			<view class="head_center bai_38">前端工程师</view>
 			<view class=" head_right bai_22">
-				<image src="../../static/index_img/index_jia.png" mode="" class="index_jia"></image><text>|</text> 
-				<image src="../../static/index_img/index_sousuo.png" mode=""class="index_sousuo"></image>
+				<image src="../../static/index_img/index_jia.png" mode="" class="index_jia" @click="go_qiwang"></image><text>|</text> 
+				<image src="../../static/index_img/index_sousuo.png" mode=""class="index_sousuo" @click="go_faxian"></image>
 			</view>
 		</view>
 		<view class="index_shaixuan hei_26" v-if="!zanwu">
 			<view class="index_shaixuan_left">
-				<view class="index_shaixuan_left_item">推荐</view>
-				<view class="index_shaixuan_left_item">
+				<view class="index_shaixuan_left_item" @click="index_tab(1)" :class="index_tab_active==1?'hei_26_bold':''">推荐</view>
+				<view class="index_shaixuan_left_item" @click="index_tab(2)" :class="index_tab_active==2?'hei_26_bold':''">
 					附近
 					
 				</view>
-				<view class="index_shaixuan_left_item">最新<text class="bai_20">15</text></view>
+				<view class="index_shaixuan_left_item" @click="index_tab(3)" :class="index_tab_active==3?'hei_26_bold':''">
+					最新
+				<text class="bai_20 zuixin_num">15</text></view>
 			</view>
 			<view class="index_shaixuan_right hui_24">
 				<pickerAddress2 @change="city_change">
@@ -80,17 +82,12 @@ export default {
 		return {
 			zanwu: false,
 			city: '',
+			index_tab_active:1
 			
 		};
 	},
 	onLoad() {
-		// #ifdef H5
-		window.initBaiduMapScript = () => {
-			// console.log(BMap);
-			this.getlocation();
-		};
-		loadBMap('initBaiduMapScript');
-		// #endif
+		this.huoqu_dizhi()
 	},
 	//下拉刷新
 	onPullDownRefresh: function() {
@@ -112,6 +109,26 @@ export default {
 				icon: 'none'
 			});
 			uni.stopPullDownRefresh();
+		},
+		huoqu_dizhi(){
+			
+			// #ifdef APP-PLUS
+			var that = this;
+			plus.geolocation.getCurrentPosition(
+				function(p) {
+					that.city = p.address.city;
+				},
+				function(e) {}
+			);
+			// #endif
+			
+			// #ifdef H5
+			window.initBaiduMapScript = () => {
+				// console.log(BMap);
+				this.getlocation();
+			};
+			loadBMap('initBaiduMapScript');
+			// #endif
 		},
 		shaixuan() {
 			uni.navigateTo({
@@ -136,6 +153,19 @@ export default {
 			uni.navigateTo({
 				url: 'zhiwei_xq'
 			});
+		},
+		go_faxian(){
+			uni.switchTab({
+				url:'faxian'
+			})
+		},
+		go_qiwang(){
+			uni.navigateTo({
+				url:'qiwang_zhiwei'
+			})
+		},
+		index_tab(index){
+			this.index_tab_active=index
 		},
 	
 		// 获取经纬度
@@ -331,5 +361,8 @@ export default {
 	}
 	.index_item_guimo text{
 		margin: 0 20rpx;
+	}
+	.zuixin_num{
+		font-weight: normal !important;
 	}
 </style>

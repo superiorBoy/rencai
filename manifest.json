@@ -69,6 +69,29 @@
         "enable" : false
     },
     "h5" : {
+		"devServer" : {
+		    "port" : 8000,
+		    "disableHostCheck" : true,
+		    "proxy" : {
+		        "/dpc" : {
+		            "target" : "https://api.map.baidu.com",
+		            "changeOrigin" : true,
+		            "secure" : false,
+		            "pathRewrite" : {
+		                "^/dpc" : ""
+		            }
+		        },
+		        "/api" : {
+		            "target" : "http://www.rc.xyz/",
+		            "changeOrigin" : true,
+		            "secure" : false,
+		            "pathRewrite" : {
+		                "^/api" : ""
+		            }
+		        }
+		    },
+		    "https" : false
+		},
         "router" : {
             "base" : "./"
         }

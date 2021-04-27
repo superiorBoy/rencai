@@ -52,14 +52,14 @@
 		
 		<view class="my_zhiwei">
 
-			<view class="my_zhiwei_item hei_24" @click="tiaozhuan('zhiwei_guanli')">
+			<view class="my_zhiwei_item hei_24" @click="tiaozhuan('jianli')">
 				<image src="../../static/index_img/my_top1.png" mode="" style="width: 68rpx;height: 68rpx;"></image>
 				<view class="my_zhiwei_item_bottom">
 					简历管理
 				</view>
 			</view>
 			
-			<view class="my_zhiwei_item hei_24" @click="tiaozhuan('fabu_zhiwei')">
+			<view class="my_zhiwei_item hei_24" @click="tiaozhuan('yixiang')">
 				<image src="../../static/index_img/my_top2.png" mode="" style="width: 80rpx;height: 68rpx;"></image>
 				<view class="my_zhiwei_item_bottom">
 					求职意向
@@ -109,11 +109,13 @@
            <view class="my_guanli">
 					<view class="my_title hei_30_bold">面试管理</view>
 					<view class="my_list">
-						<navigator url="geren_xinxi" class="zhanghao_item">
+			
+							<view class="zhanghao_item" @click="go_xiaoxi">
 							<image src="../../static/index_img/my_mianshi1.png" mode=""  ></image>
 							
 							<view class="hui_24 ">我的消息</view>
-						</navigator>
+					
+							</view>
 						<view class="zhanghao_item" @click="tiaozhuan('all_mianshi')">
 							<image src="../../static/index_img/my_mianshi2.png" mode="" ></image>
 							
@@ -156,7 +158,7 @@
 				<view class="my_guanli tuiguang_guanli">
 					<view class="my_title hei_30_bold">推广管理</view>
 					<view class="my_list">
-						<navigator url="geren_xinxi" class="zhanghao_item" @click="tiaozhuan('geren')">
+						<navigator url="geren_xinxi" class="zhanghao_item" @click="tiaozhuan('')">
 							<image src="../../static/index_img/tuiguang1.png" mode=""></image>
 							<view class="hui_24 ">邀请好友</view>
 						</navigator>
@@ -197,6 +199,11 @@ export default {
 				url:url
 			})
 		},
+		go_xiaoxi(){
+			uni.switchTab({
+				url:'xiaoxi'
+			})
+		}
 		
 	}
 };

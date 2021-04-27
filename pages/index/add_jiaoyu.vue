@@ -79,10 +79,29 @@ export default {
 			isShow:false
 		};
 	},
-	onLoad() {},
+	onLoad() {
+		
+		this.huoqu_xueli()
+	
+	},
 	methods: {
 		navigateBack() {
 			uni.navigateBack();
+		},
+		huoqu_xueli(){
+			this.$http
+				.post({
+					url: '/userapi/index/edu',
+				})
+				.then(res => {
+					console.log(res);
+					if (res.code == 0) {
+	
+					
+					}
+					
+				});
+			
 		},
 		xueli_change(e){
 			this.xueli=this.xueli_arry[e.detail.value]

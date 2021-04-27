@@ -257,7 +257,7 @@ uni-checkbox:not([disabled]) .uni-checkbox-input:hover,uni-radio:not([disabled])
 	background-size: 100% 100%;
 	border: none !important;
 }
-.xianshi_body uni-checkbox .uni-checkbox-input{
+.xianshi_body uni-checkbox .uni-checkbox-input,.xieyi uni-checkbox .uni-checkbox-input{
 		width: 36rpx;
 		height: 36rpx;
 		background-color: #FFFFFF !important;
@@ -271,4 +271,9 @@ uni-checkbox:not([disabled]) .uni-checkbox-input:hover,uni-radio:not([disabled])
 	 background: url(@/static/index_img/daoru_xuanzhong.png) no-repeat;
 	 background-size: 100% 100%; 
 }
-
+.xieyi uni-checkbox .uni-checkbox-input.uni-checkbox-input-checked{
+	width: 36rpx;
+	height: 36rpx;
+	 background: url(@/static/index_img/zhifu_xuan_bg.png) no-repeat;
+	 background-size: 100% 100%; 
+}

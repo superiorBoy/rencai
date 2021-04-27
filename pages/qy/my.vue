@@ -21,7 +21,7 @@
 						<navigator url="../index/zhuce?state=2" class="go_denglu">注册</navigator>
 					</view> -->
 				</view>
-				<view class="my_top_right bai_24" @click="tiaozhuan('zhuye')" >编辑 <image src="../../static/qy_img/my_r.png" mode="" ></image></view>
+				<view class="my_top_right bai_24" @click="tiaozhuan('geren')" >编辑 <image src="../../static/qy_img/my_r.png" mode="" ></image></view>
 			</view>
 			<view class="my_ziliao">
 				<view class="my_ziliao_item" @click="tiaozhuan('xiaoxi')">
@@ -139,15 +139,15 @@
 							<image src="../../static/qy_img/zhanghao1.png" mode="" style="width: 40rpx;height: 32rpx;margin-bottom: 26rpx;"></image>
 							<view class="hui_24 ">个人信息</view>
 						</navigator>
-						<view class="zhanghao_item" >
+						<view class="zhanghao_item" @click="tiaozhuan('../index/liushui')">
 							<image src="../../static/qy_img/zhanghao2.png" mode="" style="width: 39rpx;height: 40rpx;"></image>
 							<view class="hui_24 ">流水明细</view>
 						</view>
-						<view class="zhanghao_item" >
+						<view class="zhanghao_item" @click="tiaozhuan('../index/tixian')">
 							<image src="../../static/qy_img/zhanghao3.png" mode="" style="width: 40rpx;height: 39rpx;"></image>
 							<view class="hui_24 ">账号提现</view>
 						</view>
-						<view class="zhanghao_item">
+						<view class="zhanghao_item" @click="tiaozhuan('../index/gaimima')">
 							<image src="../../static/qy_img/zhanghao4.png" mode="" style="width: 40rpx;height:40rpx;"></image>
 							<view class="hui_24 ">修改密码</view>
 						</view>

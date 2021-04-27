@@ -1,7 +1,40 @@
 <template>
 	<view class="body">
 		<view class="zhuye_body">
-			<zhuyetop></zhuyetop>
+			<view class="zhuye_body_top">
+				<view class="zhuye_top_body">
+					<view class="zhuye_top_caozuo">
+						<image src="../../static/qy_img/bai_back.png" mode="" style="width: 22rpx;height: 41rpx;" @click="navigateBack()"></image> 
+						<image src="../../static/qy_img/bai_fenxiang.png" mode="" style="width:35rpx;height: 36rpx;"></image>
+					</view>
+					<view class="zhuye_top_tx">
+						<image src="../../static/index_img/hr.png" mode=""></image>
+						<view class="bianji bai_22">
+							+ 关注
+						</view>
+					</view>
+					<view class="zhuye_top_name bai_30_bold">
+						张女士
+					</view>
+					<view class="zhuye_top_gongsi bai_24">
+						<view class="zhuye_top_gongsi_left">
+							大明食品
+						</view>  <text></text>
+						  招聘者
+					</view>
+					<view class="zhuye_top_guanzhu bai_26">
+						<view class="zhuye_top_guanzhu_item">
+							<text>0</text>ta关注
+						</view>
+						<view class="zhuye_top_guanzhu_item">
+							<text>0</text>关注ta
+						</view>
+						<view class="zhuye_top_guanzhu_item">
+							<text>0</text>赞
+						</view>
+					</view>
+				</view>
+			</view>
 
 			<view class="zhuye_tab qian_30">
 				<text :class="['', tab_active == 1 ? 'zhuye_tab_active' : '']" @click="qiehuan(1)">个人信息</text>
@@ -11,92 +44,51 @@
 
 			<!-- 主页信息 -->
 			<view class="zhuye_xinxi_body" v-if="tab_active == 1">
+				
+				
 				<view class="padding">
-					<view class="xinxi_title hei_30_bold">个人标签</view>
-					<view class="bianqian">
-						<!-- <text>1111</text> -->
-						<view class="lan_24 chiangjian_biaoqian">+创建标签</view>
-					</view>
 					<view class="xinxi_title hei_30_bold">
 						<text>工作经历</text>
-						<image src="../../static/qy_img/zhuye_jia.png" mode="" class="zhuye_jia"></image>
+						
 					</view>
-				</view>
-				<view class="xinxi_gonzuo">
-					<view class="xinxi_gonzuo_title lan_26">
-						<text>50位招聘者想看你的在职工作体验</text>
-						<text class="bai_22 gongzuo_tianxie">去填写</text>
-					</view>
-				</view>
-				<view class="padding">
 					<view class="xinxi_gongzuo_list">
 						<view class="xinxi_gongzuo_item">
 							<image src="../../static/qy_img/zhuye_gongsi.png" mode="" class="zhuye_gongsi"></image>
 							<view class="xinxi_gongzuo_item_left">
 								<view class="xinxi_gongzuo_item_left_r">
 									<view class="xinxi_gongzuo_item_left_r_name">
-										<text class="hei_30_bold xinxi_jingli_gongsi">杭州红盟网络科技有限公司</text>
+										<text class="hei_30_bold xinxi_jingli_gongsi">大明食品</text>
 										<text class="jingli_zhuangtai lan_20">在职</text>
 									</view>
-									<view class="hui_26">招聘者</view>
+									<view class="hui_26">产品经理</view>
 								</view>
-								<image src="../../static/qy_img/hei_right.png" mode="" class="go_r"></image>
+								
 							</view>
 						</view>
 					</view>
 
-					<view class="xinxi_add" @click="go_gongzuo">
-						<view class="xinxi_add_left">
-							<view class="hei_30_bold">添加工作经历</view>
-							<view class="hei_26 xinxi_add_txt">让大家更快认识你</view>
-							<image src="../../static/qy_img/zhuye_jia.png" mode="" class="zhuye_jia"></image>
-						</view>
-						<view class="xinxi_add_right"><image src="../../static/qy_img/add_gongzuo.png" mode="widthFix"></image></view>
-					</view>
+				
 
-					<view class="xinxi_jiaoyu">
-						<view class="xinxi_title hei_30_bold">
-							<text>教育经历</text>
-							<image src="../../static/qy_img/zhuye_jia.png" mode="" class="zhuye_jia" @click="go_jiaoyu"></image>
-						</view>
-						<view class="xinxi_add" @click="go_jiaoyu">
-							<view class="xinxi_add_left">
-								<view class="hei_30_bold">添加教育经历</view>
-								<view class="hei_26 xinxi_add_txt">让校友也能找到你</view>
-								<image src="../../static/qy_img/zhuye_jia.png" mode="" class="zhuye_jia"></image>
-							</view>
-							<view class="xinxi_add_right"><image src="../../static/qy_img/add_jiaoyu.png" mode="widthFix"></image></view>
-						</view>
-					</view>
+				
 					<view class="xinxi_huoban">
 						<view class="xinxi_title hei_30_bold">
 							<text>工作伙伴</text>
-							<image src="../../static/qy_img/zhuye_jia.png" mode="" class="zhuye_jia"></image>
 						</view>
-						<view class="xinxi_add">
-							<view class="xinxi_add_left">
-								<view class="hei_30_bold">添加工作伙伴</view>
-								<view class="hei_26 xinxi_add_txt">展示团队小伙伴，吸引大家</view>
-								<image src="../../static/qy_img/zhuye_jia.png" mode="" class="zhuye_jia"></image>
+						
+						<view class="no_huoban qian_26">
+							<view class="xiangkan hei_30_bold">
+								<image src="../../static/index_img/xiangkan.png" mode=""></image>想看
 							</view>
-							<view class="xinxi_add_right"><image src="../../static/qy_img/add_huoban.png" mode="widthFix"></image></view>
+							<view class="no_huoban_txt ">
+								他还没有填写工作伙伴
+							</view>
+							<view class="">
+								点击[想看]邀请招聘者来完善吧
+							</view>
 						</view>
 					</view>
 
-					<view class="zhuye_bottom">
-						<view class="zhuye_bottom_list hei_30_bold">
-							<text>常用工具</text>
-							<image src="../../static/qy_img/zhuye_bianji.png" mode=""></image>
-						</view>
-						<view class="zhuye_bottom_list hei_30_bold">
-							<text>常逛平台</text>
-							<image src="../../static/qy_img/zhuye_bianji.png" mode=""></image>
-						</view>
-						<view class="zhuye_bottom_list hei_30_bold">
-							<text>常用公众号</text>
-							<image src="../../static/qy_img/zhuye_bianji.png" mode=""></image>
-						</view>
-					</view>
+					
 				</view>
 			</view>
 
@@ -105,37 +97,23 @@
 				<view class="zhiwei_list">
 					<view class="zhiwei_item" v-for="item in 5">
 						<view class="zhiwei_item_top">
-							<view class="zhiwei_name hei_30_bold">PHP开发工程师</view>
+							<view class="zhiwei_name hei_30_bold"><text>PHP开发工程师</text><text class="lan_32">11-20K</text></view>
 							<view class="zhiwei_yaoqiu qian_26">
-								<text>
-									杭州
-									<text class="yuandian"></text>
-									西兴
-								</text>
-								|
-								<text>大专</text>
-								|
 								<text>1-3年</text>
-								|
-								<text>9-13K</text>
+								<text>大专</text>
+								<text>系统集成</text>
+								<text>政府项目</text>
+								<text>智慧城市</text>
 							</view>
 						</view>
-						<view class="zhiwei_item_bottom qian_24">
-							<view class="zhiwei_item_bottom_left ">
-								<image src="../../static/qy_img/tx.png" mode=""></image>
-								高女士
-								<text class="yuandian"></text>
-								HR
-							</view>
-							<text class="">2021年02月04日 15:20</text>
-						</view>
+					
 					</view>
 				</view>
 			</view>
 
 			<!-- 主页动态 -->
 			<view class="zhuye_dongtai" v-if="tab_active == 3">
-				<view class="dongtai_list">
+				<!-- <view class="dongtai_list">
 					<view class="dongtai_item" v-for="item in 5">
 						<view class="dongtai_item_top">
 							<image src="../../static/qy_img/tx.png" mode=""></image>
@@ -154,6 +132,12 @@
 							的招聘信息
 						</view>
 					</view>
+				</view> -->
+				<view class="no_dongtai">
+					<image src="../../static/index_img/no_dongtai.png" mode="widthFix"></image>
+					<view class="qian_30">
+						暂无发布内容~
+					</view>
 				</view>
 			</view>
 		</view>
@@ -168,7 +152,7 @@ export default {
 	},
 	data() {
 		return {
-			tab_active: 3
+			tab_active: 2
 		};
 	},
 	// onPageScroll(e){
@@ -185,17 +169,7 @@ export default {
 		},
 		qiehuan(index) {
 			this.tab_active = index;
-		},
-		go_jiaoyu() {
-			uni.navigateTo({
-				url: 'add_jiaoyu'
-			});
-		},
-		go_gongzuo() {
-			uni.navigateTo({
-				url: 'add_gongzuo'
-			});
-		},
+		}
 	}
 };
 </script>
@@ -206,6 +180,80 @@ export default {
 	border-bottom: 2rpx solid #f5f5f5;
 }
 
+.zhuye_body_top{
+		height: 515rpx;
+		background: url(../../static/qy_img/zhuye_bg.png) no-repeat;
+		background-size: 100% 100%;
+		position: relative;
+}
+.zhuye_top_body{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.6);
+}
+.zhuye_top_caozuo{
+	justify-content: space-between;
+	display: flex;
+	align-items: center;
+	height: 150rpx;
+}
+.zhuye_top_body{
+	padding:  0 30rpx;
+	box-sizing: border-box;
+}
+.zhuye_top_tx{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	
+	margin-bottom: 30rpx;
+}
+.zhuye_top_tx image{
+		width: 120rpx;
+		height: 120rpx;
+		border-radius: 100%;
+}
+.zhuye_top_tx .bianji{
+		width: 168rpx;
+		height: 46rpx;
+		border-radius: 23rpx;
+		border: solid 1rpx #ffffff;
+		line-height: 46rpx;
+		text-align: center;
+}
+.zhuye_top_gongsi{
+	display: flex;
+	align-items: center;
+	margin: 27rpx 0 46rpx;
+	}
+	.zhuye_top_gongsi text{
+		width: 2rpx;
+		height: 22rpx;
+		display: inline-block;
+		background-color: #FFFFFF;
+		margin: 0 16rpx 0 10rpx;
+	}
+	.zhuye_top_gongsi_left{
+		
+		position: relative;
+		overflow: hidden;
+		text-overflow:ellipsis;
+		white-space: nowrap;
+		max-width: 200rpx;
+		}
+.zhuye_top_guanzhu{
+	display: flex;
+	align-items: center;
+}
+.zhuye_top_guanzhu_item{
+	margin-right: 63rpx;
+}
+.zhuye_top_guanzhu_item text{
+	margin-right: 20rpx;
+}
 .zhuye_tab {
 	display: flex;
 	justify-content: space-between;
@@ -324,6 +372,9 @@ export default {
 	position: relative;
 	top: 10rpx;
 }
+.xinxi_gongzuo_list{
+	border-bottom: 2rpx solid #F2F2F2;
+}
 .xinxi_gongzuo_item {
 	display: flex;
 	align-items: flex-start;
@@ -386,7 +437,7 @@ export default {
 /* 职位信息 */
 .zhiwei_item {
 	padding: 0 30rpx;
-	border-bottom: 20rpx solid #f8f8f8;
+	
 }
 .zhiwei_item_bottom {
 	height: 74rpx;
@@ -408,14 +459,27 @@ export default {
 }
 .zhiwei_name {
 	margin-bottom: 10rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 .zhiwei_yaoqiu text {
-	margin-right: 10rpx;
+	margin-right: 20rpx;
+	position: relative;
 }
-.zhiwei_yaoqiu text:nth-child(2),
-.zhiwei_yaoqiu text:nth-child(3),
-.zhiwei_yaoqiu text:nth-child(4) {
-	margin-left: 10rpx;
+.zhiwei_yaoqiu text::before{
+	content: '';
+	display: inline-block;
+	width: 4rpx;
+	height: 4rpx;
+	border-radius: 100%;
+	background-color: #666666;
+	position: absolute;
+	top: 16rpx;
+  right: -10rpx;
+}
+.zhiwei_yaoqiu text:last-child::before{
+	content: none;
 }
 .yuandian {
 	display: inline-block;
@@ -461,5 +525,26 @@ export default {
 	border-radius: 100%;
 	vertical-align: middle;
 	margin: 0 10rpx;
+}
+.no_huoban{
+	text-align: center;
+	margin-top: 50rpx;
+}
+.xiangkan image{
+			width: 33rpx;
+			height: 33rpx;
+			vertical-align: middle;
+		margin-right: 8rpx;
+}
+.no_huoban_txt{
+	margin: 30rpx 0 6rpx;
+}
+.no_dongtai{
+	text-align: center;
+}
+.no_dongtai image{
+		width: 366rpx;
+		height: 199rpx;
+		margin:106rpx 0 60rpx ;
 }
 </style>

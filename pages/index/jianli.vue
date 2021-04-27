@@ -64,7 +64,7 @@
 					<image src="../../static/index_img/jianli_tianjia.png" mode="" @click="go_gongzuo()"></image>
 				</view>
 
-				<view class="jianli_qiwang_bottom" @click="go_gongzuo()">
+				<view class="jianli_qiwang_bottom jianli_list" @click="go_gongzuo()">
 					<view class="jianli_qiwang_bottom_zhiwei ">
 						<text class="hei_30_bold">杭州金科网络科技有限公司</text>
 						<view class="qian_28 jingli_time">
@@ -85,6 +85,28 @@
 						<text>React.js</text>
 					</view>
 				</view>
+				
+				<view class="jianli_qiwang_bottom jianli_list" @click="go_gongzuo()">
+					<view class="jianli_qiwang_bottom_zhiwei ">
+						<text class="hei_30_bold">杭州金科网络科技有限公司</text>
+						<view class="qian_28 jingli_time">
+							2018.01-2021-01
+							<image src="../../static/qy_img/go_right.png" mode=""></image>
+						</view>
+					</view>
+					<view class="hui_30 jingli_bumen">前端开发工程师 产品研发部</view>
+				
+					<view class="jianli_jingli_body hui_30">
+						<view class="">内容:1.扎实的编程能力,熟悉基本的数据结构和算法</view>
+						<view class="">2.熟练掌握Vue/React的原理,了解实现的关键技术</view>
+						<view class="">3.对于工程化,平台化有一定的思考,并有所实践</view>
+					</view>
+					<view class="jianli_jingli_bianqian hui_26">
+						<text>Javascript</text>
+						<text>Angular</text>
+						<text>React.js</text>
+					</view>
+				</view>
 			</view>
 
 			<view class="jianli_jingli">
@@ -94,7 +116,7 @@
 					<image src="../../static/index_img/jianli_tianjia.png" mode="" @click="go_xiangmu()"></image>
 				</view>
 
-				<view class="jianli_qiwang_bottom" @click="go_xiangmu()">
+				<view class="jianli_qiwang_bottom jianli_list" @click="go_xiangmu()">
 					<view class="jianli_qiwang_bottom_zhiwei ">
 						<text class="hei_30_bold">十荟团</text>
 						<view class="qian_28 jingli_time">
@@ -104,6 +126,20 @@
 					</view>
 					<view class="hui_30 jingli_bumen">前端开发工程师</view>
 
+					<view class="jianli_xiamgmu_body hui_30">
+						内容：1、负责前端代码的编写，实现界面效果、交 互和功能；2、按产品设计需求完成项目开发迭代， 主动实现性能优化和提升用户体验。
+					</view>
+				</view>
+				<view class="jianli_qiwang_bottom jianli_list" @click="go_xiangmu()">
+					<view class="jianli_qiwang_bottom_zhiwei ">
+						<text class="hei_30_bold">十荟团</text>
+						<view class="qian_28 jingli_time">
+							2018.01-2021-01
+							<image src="../../static/qy_img/go_right.png" mode=""></image>
+						</view>
+					</view>
+					<view class="hui_30 jingli_bumen">前端开发工程师</view>
+				
 					<view class="jianli_xiamgmu_body hui_30">
 						内容：1、负责前端代码的编写，实现界面效果、交 互和功能；2、按产品设计需求完成项目开发迭代， 主动实现性能优化和提升用户体验。
 					</view>
@@ -383,5 +419,11 @@ export default {
 }
 .ziding_body_bottom {
 	line-height: 44rpx;
+}
+.jianli_list{
+	margin-bottom: 30rpx;
+}
+.jianli_list:last-child{
+	margin-bottom: 0;
 }
 </style>

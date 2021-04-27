@@ -12,10 +12,9 @@
 					<view class="hei_38_bold zhiwei_top_title">想找哪些工作？</view>
 					<view class="zhiwei_sousuo">
 						<image src="../../static/index_img/guanjian_sousuo.png" mode=""></image>
-						<input type="text" value="" placeholder="搜索职位名称" class="hei_30" />
+						<input type="text" value="" placeholder="搜索职位名称" class="hei_30" confirm-type="search" @confirm="confirm" v-model="sou_txt" />
 					</view>
 				</view>
-
 				<view class="zhiwei hei_28">
 					<view class="zhiwei_left">
 						<view class="zhiwei_fenlei" v-for="(item, index) in hangye_arry" :class="index == fenlei_on ? 'fenlei_active' : ''" @click="xuan_fenlei(index)">
@@ -71,7 +70,8 @@ export default {
 			checkedArrey: [],
 			xuan_num: 0,
 			zhankai_arry: [],
-			fenlei_on: 0
+			fenlei_on: 0,
+			sou_txt: ''
 		};
 	},
 	onLoad() {},
@@ -81,6 +81,9 @@ export default {
 		},
 		xuan_fenlei(index) {
 			this.fenlei_on = index;
+		},
+		confirm() {
+			console.log(this.sou_txt);
 		}
 	}
 };
@@ -95,7 +98,6 @@ page {
 	background-color: #ffffff;
 }
 .zi_body {
-	
 	height: 100%;
 }
 .qiwang_body {
@@ -150,6 +152,7 @@ page {
 }
 .body {
 	height: 100%;
+	overflow: hidden;
 }
 .zhiwei_fenlei {
 	height: 100rpx;
