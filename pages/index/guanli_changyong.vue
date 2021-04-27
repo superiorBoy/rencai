@@ -62,7 +62,7 @@ export default {
 	
 }
 .zi_body {
-	padding-top: 100rpx;
+	
 	padding-left: 30rpx;
 	padding-right: 30rpx;
 	padding-bottom: 30rpx;

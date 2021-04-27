@@ -94,7 +94,7 @@ export default {
 	border-bottom: 2rpx solid #f5f5f5;
 }
 .zi_body {
-	padding-top: 100rpx;
+	
 }
 .gong_tx {
 	width: 110rpx;

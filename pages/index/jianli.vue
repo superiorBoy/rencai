@@ -3,7 +3,10 @@
 		<view class="head">
 			<view class="head_back"><image src="../../static/qy_img/back.png" mode="" @click="navigateBack"></image></view>
 			<view class="head_center hei_38_bold">我的在线简历</view>
-			<view class=" head_right hei_30_bold"><text>预览</text></view>
+			<view class=" head_right hei_30_bold">
+				<navigator url="yulan_jianli">预览</navigator>
+				
+			</view>
 		</view>
 
 		<view class="zi_body">

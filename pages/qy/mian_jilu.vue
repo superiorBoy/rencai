@@ -131,9 +131,7 @@ export default {
 	background-color: #00c6c9;
 	border-radius: 3rpx;
 }
-.tab_body {
-	padding-top: 160rpx;
-}
+
 .mian_riqi {
 	height: 86rpx;
 	background-color: #f8f8f8;

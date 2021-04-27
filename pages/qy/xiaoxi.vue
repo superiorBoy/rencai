@@ -151,7 +151,7 @@ page{
 	margin-right: 33rpx;
 }
 .xiaoxi_body {
-	padding-top: 196rpx;
+	
 	padding-left: 30rpx;
 	padding-right: 30rpx;
 	background-color: #FFFFFF;

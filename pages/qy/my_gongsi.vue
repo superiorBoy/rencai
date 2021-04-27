@@ -89,7 +89,7 @@ export default {
 	border-bottom: 2rpx solid #f5f5f5;
 }
 .zi_body {
-	padding-top: 100rpx;
+	
 }
 .my_gongsi_top_right image {
 	width: 110rpx;

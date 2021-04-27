@@ -125,7 +125,7 @@ export default {
 	border-bottom: 2rpx solid #f5f5f5;
 }
 .zi_body {
-	padding-top: 100rpx;
+	
 }
 .wei_shimimg {
 	display: flex;

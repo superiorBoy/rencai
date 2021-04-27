@@ -54,7 +54,7 @@ export default {
 	
 }
 .zi_body {
-	padding-top: 100rpx;
+	
 }
 .head_back image{
 	width: 30rpx;

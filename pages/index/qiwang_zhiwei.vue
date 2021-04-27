@@ -95,7 +95,7 @@ page {
 	background-color: #ffffff;
 }
 .zi_body {
-	padding-top: 100rpx;
+	
 	height: 100%;
 }
 .qiwang_body {

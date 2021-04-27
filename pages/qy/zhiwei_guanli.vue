@@ -111,7 +111,7 @@ export default {
 		
 }
 .tab_body{
-	padding-top: 160rpx;
+	
 	
 }
 .zhiwei_list{

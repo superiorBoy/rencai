@@ -19,18 +19,20 @@
 				</view>
 			</view>
 			<view class="" style="padding: 0 30rpx;">
-				<view class="qianbao_list hei_30">
+			
+					<navigator url="chongzhi" class="qianbao_list hei_30">
 					<view class="qianbao_list_left">
 					<image src="../../static/index_img/qianbao_chongzhi.png"style="width: 36rpx;height: 48rpx;" mode=""></image>	充值
 					</view>
 					<image src="../../static/qy_img/go_right.png" mode="" class="go_right"></image>
-				</view>
-				<view class="qianbao_list hei_30">
+					</navigator>
+				
+					<navigator url="tixian" class="qianbao_list hei_30">
 					<view class="qianbao_list_left">
 					<image src="../../static/index_img/qianbao_tixian.png" mode="" style="width: 36rpx;height: 33rpx;"></image>	提现
 					</view>
 					<image src="../../static/qy_img/go_right.png" mode="" class="go_right"></image>
-				</view>
+				</navigator>
 			</view>
 		
 			<view class="qianbao_mingxi qian_26">
@@ -128,7 +130,7 @@ export default {
 
 <style>
 .zi_body {
-	padding-top: 100rpx;
+	
 }
 .head{
 	background: url(../../static/index_img/qianbao_title_bg.png) no-repeat;

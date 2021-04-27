@@ -454,7 +454,7 @@ page {
 		text-align: center;
 }
 .liaotian_body{
-	padding-top: 340rpx;
+	
 	background-color: #FFFFFF;
 }
 .xiaoxi_tx{

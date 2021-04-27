@@ -209,46 +209,66 @@ button::after{
 	 background: url(@/static/index_img/daoru_xuanzhong.png) no-repeat;
 	 background-size: 100% 100%; 
 }
-
 .daoru_body uni-checkbox .uni-checkbox-input.uni-checkbox-input-checked:before{
 	content: none;
 }
-
- uni-checkbox .uni-checkbox-input.uni-checkbox-input-checked:before,uni-radio .uni-radio-input.uni-radio-input-checked:before{
+uni-checkbox .uni-checkbox-input.uni-checkbox-input-checked:before,uni-radio .uni-radio-input.uni-radio-input-checked:before{
  	content: none !important;
  }
- 
- uni-checkbox:not([disabled]) .uni-checkbox-input:hover,uni-radio:not([disabled]) .uni-radio-input:hover{
+
+uni-checkbox:not([disabled]) .uni-checkbox-input:hover,uni-radio:not([disabled]) .uni-radio-input:hover{
  	border-color: #E8E8E8 !important;
  	content: none !important;
  }
 .shiming_list uni-radio .uni-radio-input{
 	width: 20rpx;
-		height: 20rpx;
-		background-color: #FFFFFF !important;
-		border-color: #E8E8E8 !important;
+	height: 20rpx;
+	background-color: #FFFFFF !important;
+	border-color: #E8E8E8 !important;
 }
 .shiming_list uni-radio .uni-radio-input.uni-radio-input-checked{
 	width: 20rpx;
 	height: 20rpx; 
 	background: url(@/static/index_img/shiming_radio.png) no-repeat;
 	background-size: 100% 100%;
-	 }
-	 .uni-picker-container .uni-picker-action.uni-picker-action-confirm{
-	 	color: #00c6c9;
-	 }
+}
+.uni-picker-container .uni-picker-action.uni-picker-action-confirm{
+	color: #00c6c9;
+}
 	 
-	
 
-	.zhanshi_list uni-radio .uni-radio-input{
-		width: 30rpx;
-			height: 30rpx;
-			background-color: #FFFFFF !important;
-			border-color: #E8E8E8 !important;
-	}
-	.zhanshi_list uni-radio .uni-radio-input.uni-radio-input-checked{
-		width: 30rpx;
-		height: 30rpx; 
-		background: url(@/static/index_img/yinsi_radio.png) no-repeat;
-		background-size: 100% 100%;
-		}
+.zhanshi_list uni-radio .uni-radio-input,.fangshi_list uni-radio .uni-radio-input{
+	width: 30rpx;
+	height: 30rpx;
+	background-color: #FFFFFF !important;
+	border-color: #E8E8E8 !important;
+}
+.zhanshi_list uni-radio .uni-radio-input.uni-radio-input-checked{
+	width: 30rpx;
+	height: 30rpx; 
+	background: url(@/static/index_img/yinsi_radio.png) no-repeat;
+	background-size: 100% 100%;
+	
+}
+.fangshi_list uni-radio .uni-radio-input.uni-radio-input-checked{
+	width: 30rpx;
+	height: 30rpx; 
+	background: url(@/static/index_img/daoru_xuanzhong.png) no-repeat;
+	background-size: 100% 100%;
+	border: none !important;
+}
+.xianshi_body uni-checkbox .uni-checkbox-input{
+		width: 36rpx;
+		height: 36rpx;
+		background-color: #FFFFFF !important;
+		border-color: #E8E8E8 !important;
+		border-radius: 100%;
+		margin: 0;
+}
+.xianshi_body uni-checkbox .uni-checkbox-input.uni-checkbox-input-checked{
+	width: 36rpx;
+	height: 36rpx;
+	 background: url(@/static/index_img/daoru_xuanzhong.png) no-repeat;
+	 background-size: 100% 100%; 
+}
+

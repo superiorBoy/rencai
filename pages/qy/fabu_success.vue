@@ -80,7 +80,7 @@ export default {
 	
 }
 .zi_body {
-	padding-top: 100rpx;
+	
 	
 }
 .fabu_success_top {

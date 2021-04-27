@@ -182,12 +182,10 @@ export default {
 	background-color: #00c6c9;
 }
 
-.index_body {
-	padding-top: 182rpx;
-}
+
 .index_shaixuan {
 	position: fixed;
-	top: 100rpx;
+
 	display: flex;
 	justify-content: space-between;
 	align-items: center;

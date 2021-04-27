@@ -6,7 +6,7 @@
 			<view class=" head_right hei_30_bold"></view>
 		</view>
 
-		<view class="zi_body shaixuan_body">
+		<view class="zi_body ">
 			<view class="shaixuan_title hei_30_bold">消息类型</view>
 			<view class="leixing hui_28">
 				<text v-for="(item, index) in leixng_arry" :class="['', leixing_on == index ? 'leixing_active' : '']" @click="xuan_leixing(index)">{{ item }}</text>
@@ -56,7 +56,7 @@ export default {
 	border-bottom: 2rpx solid #f5f5f5;
 }
 .zi_body {
-	padding-top: 100rpx;
+	
 	padding-left: 30rpx;
 	padding-right: 30rpx;
 }

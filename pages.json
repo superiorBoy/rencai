@@ -34,6 +34,21 @@
 			"path": "pages/index/add_xiangmu"
 		},
 		{
+			"path": "pages/index/add_qiye"
+		},
+		{
+			"path": "pages/index/add_zhiyuan"
+		},
+		{
+			"path": "pages/index/chongzhi"
+		},
+		{
+			"path": "pages/index/tixian"
+		},
+		{
+			"path": "pages/index/yulan_jianli"
+		},
+		{
 			"path": "pages/index/huiyuan"
 		},
 		{

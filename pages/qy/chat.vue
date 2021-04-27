@@ -545,7 +545,6 @@ export default {
 	background-color: #ffffff;
 }
 .chat_body {
-	padding-top: 220rpx;
 	padding-left: 30rpx;
 	padding-right: 30rpx;
 	background-color: #f8f8f8;

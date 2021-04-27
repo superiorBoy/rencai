@@ -101,7 +101,7 @@ page {
 	border-radius: 3rpx;
 }
 .tab_body {
-	padding-top: 160rpx;
+	
 }
 .xingqu_item_top_left {
 	width: 84rpx;

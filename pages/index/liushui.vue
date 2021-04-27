@@ -105,7 +105,7 @@ export default {
 
 <style>
 .zi_body {
-	padding-top: 100rpx;
+	
 }
 
 .tab_top {

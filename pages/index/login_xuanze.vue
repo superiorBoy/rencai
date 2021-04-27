@@ -70,7 +70,7 @@ export default {
 	
 }
 .zi_body {
-	padding-top: 100rpx;
+	
 }
 .deng_title{
 	text-align: center;

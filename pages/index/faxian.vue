@@ -117,9 +117,6 @@ export default {
 	align-items: center;
 	justify-content: flex-end;
 }
-.faxian_body{
-	padding-top: 190rpx;
-}
 
 .faxian_tab_body{
 	position: fixed;

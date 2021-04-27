@@ -186,9 +186,7 @@ export default {
 .tabber_body {
 	padding-bottom: 100rpx;
 }
-.index_body {
-	padding-top: 182rpx;
-}
+
 .index_shaixuan {
 	position: fixed;
 	top: 100rpx;

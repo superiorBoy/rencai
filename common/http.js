@@ -11,7 +11,7 @@ if (process.env.NODE_ENV == 'development') {
 	//#ifdef APP-PLUS
 	  baseUrl = 'http://www.xhlvshi.com' // 生产环境
 	  WebSocket_url='www.xhlvshi.com'
-	  // uni.setStorageSync("xian_url",baseUrl)
+	  
 	//#endif
 	
 } else {
@@ -19,7 +19,7 @@ if (process.env.NODE_ENV == 'development') {
 	  //#ifdef APP-PLUS
 	    baseUrl = 'http://www.xhlvshi.com/' // 生产环境
 		WebSocket_url='www.xhlvshi.com'
-	    uni.setStorageSync("xian_url",baseUrl)
+	    
 	  //#endif
 }
 

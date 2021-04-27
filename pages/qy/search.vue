@@ -83,7 +83,7 @@ export default {
 	padding-bottom: 100rpx;
 }
 .index_body {
-	padding-top: 182rpx;
+	
 	padding-left: 30rpx;
 	padding-right: 30rpx;
 }

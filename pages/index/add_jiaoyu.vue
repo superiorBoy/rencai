@@ -121,7 +121,7 @@ export default {
 	width: 60%;
 }
 .zi_body {
-	padding-top: 100rpx;
+	
 }
 
 .geren_list {
