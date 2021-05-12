@@ -6,19 +6,19 @@ if (process.env.NODE_ENV == 'development') {
     baseUrl='/api'
 	
 	// #ifndef H5
-	   baseUrl='http://www.rc.xyz/'
+	   // baseUrl='http://www.rc.xyz/'
 	// #endif
 	//#ifdef APP-PLUS
-	  baseUrl = 'http://www.xhlvshi.com' // 生产环境
-	  WebSocket_url='www.xhlvshi.com'
+	  // baseUrl = 'http://www.xhlvshi.com' // 开发环境
+	  // WebSocket_url='www.xhlvshi.com'
 	  
 	//#endif
 	
 } else {
         baseUrl = '' // 生产环境
 	  //#ifdef APP-PLUS
-	    baseUrl = 'http://www.xhlvshi.com/' // 生产环境
-		WebSocket_url='www.xhlvshi.com'
+	    // baseUrl = 'http://www.xhlvshi.com/' // 生产环境
+		// WebSocket_url='www.xhlvshi.com'
 	    
 	  //#endif
 }
@@ -27,13 +27,24 @@ function request(url,method,data,header={}){
   // uni.showLoading({
   //   title: '加载中...'
   // })
+  
+  if(data){
+	  data.token=uni.getStorageSync("token")
+  }else{
+	  var data={
+		  token:uni.getStorageSync("token")
+	  }
+  }
+  
   return new Promise((resolve,reject) => {
+	  
     uni.request({
       url: baseUrl + url,
       method: method,
       data: data,
       header: {
-        'content-type': 'application/x-www-form-urlencoded'
+        'content-type': 'application/x-www-form-urlencoded',
+		'Token':uni.getStorageSync("token")
       },
       success: function(resp) {
         uni.hideLoading();

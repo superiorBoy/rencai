@@ -19,13 +19,13 @@
 					<view class="tixian_list_left">
 						可提现余额
 					</view>
-					<text>￥100.00</text>
+					<text>￥{{yue}}</text>
 				</view>
 				<view class="tixian_list hei_30">
 					<view class="tixian_list_left">
 						用户姓名
 					</view>
-					<text>张晓梅</text>
+					<input type="text" value="" placeholder="请输入姓名" class="hei_28" v-model="name" />
 				</view>
 				<view class="tixian_list hei_30">
 					<view class="tixian_list_left">
@@ -78,7 +78,14 @@
 		},
 		created() {},
 		onLoad(option) {
-
+           this.$http
+			.post({
+				url: '/userapi/user/user'
+			})
+			.then(res => {
+				this.yue=res.data.user.rmb
+				this.name=res.data.user.nickname
+			});
 	
 		},
 		methods: {
@@ -113,27 +120,27 @@
 					});
 					return false
 				}
-				// this.$http
-				// 	.post({
-				// 		url: '/lawyer/user/zx_tixian',
-				// 		data:{
-				// 			alipayuser:this.zhifubao,
-				// 			rmb:this.jine,
-				// 			myname:this.name	
-				// 		}
-				// 	})
-				// 	.then(res => {
-				// 			if(res.code==0){
-				// 				uni.showToast({
-				// 					title: '提交成功',
-				// 					duration: 2000
-				// 				});
-				// 				this.zhifubao=''
-				// 				this.jine=''
-				// 			}
-				// 		console.log(res.data)
+				this.$http
+					.post({
+						url: '/userapi/user/tixian',
+						data:{
+							alipayuser:this.zhifubao,
+							rmb:this.jine,
+							myname:this.name	
+						}
+					})
+					.then(res => {
+							if(res.code==0){
+								uni.showToast({
+									title: '提交成功',
+									duration: 2000
+								});
+								this.zhifubao=''
+								this.jine=''
+							}
+						console.log(res.data)
 					
-				// 	});
+					});
 
 				console.log(this.zhifubao, this.jine)
 			}

@@ -80,7 +80,7 @@
 						<image src="../../static/qy_img/hei_right.png" mode=""></image>
 					</view>
 				</view>
-				<picker mode="selector" :range="xueli_arry" @change="xueli_change" >
+				<picker mode="selector" :range="xueli_arry" @change="xueli_change":range-key="'name'" >
 				<view class="fabu_item">
 					<text class="fabu_item_left">学历</text>
 					<view class="fabu_item_right" :class="['',xueli==''?'qian_28':'hei_28']">
@@ -156,7 +156,7 @@ export default {
 			youhuo_arry:['aaa','bbb','ccc','ddd'],
 			miaoshu:'',
 			xueli:'',
-			xueli_arry:['博士','硕士','本科','大专','中专','高中','初中','小学'],
+			xueli_arry:[],
 			jingyan:'',
 			jingyan_arry:['不限','1-3年','3-5年','5-10年','10年以上'],
 			xingbie:'',
@@ -168,10 +168,32 @@ export default {
 		};
 	},
 	
-	onLoad() {},
+	onLoad() {
+		this.huoqu_xueli()
+	},
 	methods: {
 		navigateBack() {
 			uni.navigateBack()
+		},
+		huoqu_xueli(){
+			this.$http
+				.post({
+					url: '/userapi/index/edu',
+				})
+				.then(res => {
+					
+					if (res.code == 0) {
+					   this.xueli_obj=res.data
+					   var array = [];
+					   for (var key in res.data) {
+					    	array.push({name:res.data[key],id:key});
+					   }
+					   this.xueli_arry = array;
+			
+					}
+					
+				});
+			
 		},
 		hangye_change(e){
 			console.log(e.detail.value)
@@ -192,7 +214,8 @@ export default {
 			this.youhuo=this.youhuo_arry[e.detail.value]
 		},
 		xueli_change(e){
-			this.xueli=this.xueli_arry[e.detail.value]
+			this.xueli_id=this.xueli_arry[e.detail.value].id
+			this.xueli=this.xueli_arry[e.detail.value].name
 		},
 		jingyan_change(e){
 			this.jingyan=this.jingyan_arry[e.detail.value]

@@ -10,27 +10,26 @@
 			<view class="yonghu_zhuce ">
 				<view class="zhuce_list">
 					<image src="../../static/index_img/shouji_icon.png"></image>
-					<input type="text" value="" placeholder="手机号码" v-model="shouji" />
+					<input type="text" value="" placeholder="手机号码" v-model="shouji" class="hei_28"/>
 				</view>
 
 				<view class="zhuce_list">
 					<image src="../../static/index_img/mima_icon.png" mode=""></image>
-					<input :type="type1" value="" placeholder="请设置一个最少6位的密码" @input="mimashu" />
+					<input :type="type1" value="" placeholder="请设置一个最少6位的密码" @input="mimashu" class="hei_28"/>
 					<image :src="yan1_zhuangtai" mode="" @click="chakan()" :class="['yanjing', type1 == 'text' ? 'kai' : 'guan']"></image>
 				</view>
-				<navigator url="forget" class="wangji_mima hong_28">忘记密码？</navigator>
+				<navigator url="forget" class="wangji_mima shenlan_28">忘记密码？</navigator>
 
 				<view class="xieyi qian_24">
 					<checkbox :checked="isCheck" @click="checkBox($event)" class="xieyi_xuan" />
 					我已阅读并同意
-					<navigator url="xieyi" class="hong_24">《用户协议》</navigator>
-					和
-					<navigator url="yinsi1111111" class="hong_24">《隐私政策》</navigator>
+					<navigator url="xieyi" class="shenlan_24">《人才网协议》</navigator>
+				
 				</view>
 				<button type="" class="zhuce bai_30" @click="login">立即登录</button>
 				<view class="zhuce_tishi qian_24">
 					暂无账号？
-					<navigator url="zhuce" class="hong_24">请注册</navigator>
+					<navigator url="zhuce" class="shenlan_24">请注册</navigator>
 				</view>
 			</view>
 		</view>
@@ -44,30 +43,27 @@ export default {
 			mima: '',
 			shouji: '',
 			type1: 'password',
-			isCheck: false,
-			yan1_zhuangtai: '../../static/lsimg/yanguan.png',
+			isCheck: true,
+			yan1_zhuangtai: '../../static/index_img/yanguan.png',
 			back: false,
-			dianji: true
+			dianji: true,
+			type:1
 		};
 	},
 	onLoad(option) {
-		if (option != '') {
-			if (option.type == 'back') {
-				this.back = true;
-			}
-			if (option.type == '3') {
-				this.type = option.type;
-			}
+		if (option.type) {
+			this.type=option.type
+			
 		}
-		this.$http
-			.post({
-				url: '/mapi/index/getlogincheck'
-			})
-			.then(res => {
-				if (res.data.logincheck == 1) {
-					this.isCheck = true;
-				}
-			});
+		// this.$http
+		// 	.post({
+		// 		url: '/mapi/index/getlogincheck'
+		// 	})
+		// 	.then(res => {
+		// 		if (res.data.logincheck == 1) {
+		// 			this.isCheck = true;
+		// 		}
+		// 	});
 	},
 	methods: {
 		navigateBack() {
@@ -81,10 +77,10 @@ export default {
 		},
 		chakan() {
 			if (this.type1 == 'password') {
-				(this.type1 = 'text'), (this.yan1_zhuangtai = '../../static/lsimg/yankai.png');
+				(this.type1 = 'text'), (this.yan1_zhuangtai = '../../static/index_img/yankai.png');
 			} else {
 				this.type1 = 'password';
-				this.yan1_zhuangtai = '../../static/lsimg/yanguan.png';
+				this.yan1_zhuangtai = '../../static/index_img/yanguan.png';
 			}
 		},
 		login() {
@@ -102,7 +98,7 @@ export default {
 				this.dianji = false;
 				this.$http
 					.post({
-						url: '/index/login/login',
+						url: '/userapi/login/login',
 						data: {
 							mobile: this.shouji,
 							password: this.mima
@@ -110,32 +106,14 @@ export default {
 					})
 					.then(res => {
 						if (res.code == 0) {
-							uni.removeStorageSync('user_chat_list');
-							uni.removeStorageSync('ls_chat_list');
-							uni.setStorageSync('xuanze', '2');
-							that.$http
-								.post({
-									url: '/mapi/user/useraddress'
-								})
-								.then(res => {
-									if (res.data.provinces) {
-										uni.setStorageSync('citys', res.data.citys);
-									} else {
-										uni.removeStorageSync('citys');
-									}
-								});
-
-							if (this.type == 3) {
-								uni.reLaunch({
-									url: '../ls/yaoqing'
-								});
-							} else if (res.data.grade == 2) {
+                            uni.setStorageSync("token",res.data.token)
+							if (res.data.grade == 2) {
 								uni.reLaunch({
 									url: '../ls/my'
 								});
 							} else {
 								uni.switchTab({
-									url: 'index'
+									url: 'my'
 								});
 							}
 						}
@@ -217,7 +195,7 @@ button {
 
 .zhuce {
 	height: 88rpx;
-	background-color: #f43a51;
+	background-color: #1986fb;
 	border-radius: 44rpx;
 	line-height: 88rpx;
 }

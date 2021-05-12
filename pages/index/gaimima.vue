@@ -10,7 +10,7 @@
 			<view class="yonghu_zhuce ">
 				<view class="zhuce_list dis_sp hei_30">
 					<text>手机号码</text>
-					<text>13100000000</text>
+					<text>{{user.mobile}}</text>
 				</view>
 				<view class="zhuce_list "><input type="text" placeholder="原始密码" v-model="yuan" class="hei_30" /></view>
 				<view class="zhuce_list">
@@ -42,7 +42,17 @@ export default {
 		};
 	},
 
-	onLoad() {},
+	onLoad() {
+		
+		this.$http
+					.post({
+						url: '/userapi/user/user'
+					})
+					.then(res => {
+						this.user=res.data.user
+					});
+		
+	},
 	methods: {
 		navigateBack() {
 			uni.navigateBack();
@@ -83,7 +93,7 @@ export default {
 
 			this.$http
 				.post({
-					url: '/lawyer/user/zx_mima',
+					url: '/userapi/user/uppassword',
 					data: {
 						oldpassword: this.yuan,
 						password1: this.mima,

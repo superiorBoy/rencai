@@ -18,6 +18,20 @@ if (typeof window != 'undefined') {
 export default {
 	onLaunch: function() {
 		console.log('App Launch');
+		
+		uni.setStorageSync("img_url",'https://leleossa.oss-cn-hangzhou.aliyuncs.com/')
+		
+		// this.$http
+		// 	.post({
+		// 		url: '/userapi/index/geturl'
+		// 	})
+		// 	.then(res => {
+		// 		if (res.code == 0) {
+					
+		// 		}
+		// 	});
+		
+		
 	},
 	onShow: function() {
 		console.log('App Show');
@@ -89,7 +103,7 @@ page,
 	top: 100rpx;
 }
 .index_shaixuan{
-		top: 100rpx;
+	top: 100rpx;
 }
 .faxian_body{
 	padding-top: 190rpx;

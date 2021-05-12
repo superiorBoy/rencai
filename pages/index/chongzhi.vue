@@ -53,11 +53,11 @@ export default {
 	},
 	created() {},
 	onLoad(option) {
-		this.huoqu_pay_fs();
+		// this.huoqu_pay_fs();
 	},
 	onShow() {
 		this.number = '';
-		this.huoqu_yue();
+		// this.huoqu_yue();
 	},
 	methods: {
 		navigateBack() {
@@ -77,16 +77,16 @@ export default {
 		all() {
 			this.jine = this.yue;
 		},
-		huoqu_yue() {
-			// 获取用户信息
-			this.$http
-				.post({
-					url: '/mapi/user/user'
-				})
-				.then(res => {
-					this.yue = res.data.user.rmb;
-				});
-		},
+		// huoqu_yue() {
+		// 	// 获取用户信息
+		// 	this.$http
+		// 		.post({
+		// 			url: '/mapi/user/user'
+		// 		})
+		// 		.then(res => {
+		// 			this.yue = res.data.user.rmb;
+		// 		});
+		// },
 		save() {
 			if (this.number == '') {
 				uni.showToast({
@@ -100,6 +100,7 @@ export default {
 			if (this.apppaytype == 1) {
 			        this.h5_pay()
 			} else {
+				
 				// #ifdef H5
 				   this.h5_pay()
 				// #endif
@@ -120,7 +121,7 @@ export default {
 		   
 		   this.$http
 		   	.post({
-		   		url: '/mapi/user/chongzhih5',
+		   		url: '/userapi/user/chongzhih5',
 		   		data: {
 		   			paymoney: that.number
 		   		}
@@ -149,7 +150,7 @@ export default {
 		app_pay() {
 			this.$http
 				.post({
-					url: '/mapi/user/chongzhi',
+					url: '/userapi/user/chongzhi',
 					data: {
 						paymoney: this.number
 					}

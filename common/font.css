@@ -189,6 +189,22 @@
 .hong_32_bold{font-size: 32rpx;color: #f43a51; font-weight: bold;}
 .hong_38_bold{font-size: 38rpx;color: #f43a51; font-weight: bold;}
 
+.shenlan_20{font-size: 20rpx;color: #1986fb;}
+.shenlan_21{font-size: 21rpx;color: #1986fb;}
+.shenlan_22{font-size: 22rpx;color: #1986fb;}
+.shenlan_23{font-size: 23rpx;color: #1986fb;}
+.shenlan_24{font-size: 24rpx;color: #1986fb;}
+.shenlan_25{font-size: 25rpx;color: #1986fb;}
+.shenlan_26{font-size: 26rpx;color: #1986fb;}
+.shenlan_27{font-size: 27rpx;color: #1986fb;}
+.shenlan_28{font-size: 28rpx;color: #1986fb;}
+.shenlan_29{font-size: 29rpx;color: #1986fb;}
+.shenlan_30{font-size: 30rpx;color: #1986fb;}
+.shenlan_31{font-size: 31rpx;color: #1986fb;}
+.shenlan_32{font-size: 32rpx;color: #1986fb;}
+.shenlan_34{font-size: 34rpx;color: #1986fb;}
+.shenlan_36{font-size: 36rpx;color: #1986fb;}
+
 
 
 button::after{
@@ -257,7 +273,7 @@ uni-checkbox:not([disabled]) .uni-checkbox-input:hover,uni-radio:not([disabled])
 	background-size: 100% 100%;
 	border: none !important;
 }
-.xianshi_body uni-checkbox .uni-checkbox-input,.xieyi uni-checkbox .uni-checkbox-input{
+.xianshi_body uni-checkbox .uni-checkbox-input{
 		width: 36rpx;
 		height: 36rpx;
 		background-color: #FFFFFF !important;
@@ -271,9 +287,18 @@ uni-checkbox:not([disabled]) .uni-checkbox-input:hover,uni-radio:not([disabled])
 	 background: url(@/static/index_img/daoru_xuanzhong.png) no-repeat;
 	 background-size: 100% 100%; 
 }
+.xieyi uni-checkbox .uni-checkbox-input{
+		width: 22rpx;
+		height: 22rpx;
+		background-color: #FFFFFF !important;
+		
+		
+		margin: 0;
+}
 .xieyi uni-checkbox .uni-checkbox-input.uni-checkbox-input-checked{
-	width: 36rpx;
-	height: 36rpx;
-	 background: url(@/static/index_img/zhifu_xuan_bg.png) no-repeat;
+	width: 22rpx;
+	height: 22rpx;
+	 background:url(@/static/index_img/xieyi_ch_bg.png) no-repeat;
 	 background-size: 100% 100%; 
+	 
 }

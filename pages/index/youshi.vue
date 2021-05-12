@@ -40,7 +40,17 @@ export default {
 		};
 	},
 	created() {},
-	onLoad(option) {},
+	onLoad(option) {
+		
+		this.$http
+			.post({
+				url: '/userapi/resume/my'
+			})
+			.then(res => {
+				this.youshi=res.data.user.youshi
+				this.yishu_num=res.data.user.youshi.length
+			});
+	},
 	methods: {
 		navigateBack() {
 			uni.navigateBack();
@@ -58,29 +68,24 @@ export default {
 				return false;
 			}
 
-			// this.$http
-			// 	.post({
-			// 		url: '/lawyer/user/zx_geren',
-			// 		data: {
-			// 			state: 11,
-			// 			shijian: this.time,
-			// 			shijian2: this.end_time,
-			// 			jigou: this.jigou,
-			// 			zhiwu: this.zhiwu,
-			// 			lyinfoid: this.id
-			// 		}
-			// 	})
-			// 	.then(res => {
-			// 		if (res.code == 0) {
-			// 			uni.showToast({
-			// 				title: '操作成功',
-			// 				duration: 2000
-			// 			});
-			// 			setTimeout(function() {
-			// 				uni.navigateBack();
-			// 			}, 2000);
-			// 		}
-			// 	});
+			this.$http
+				.post({
+					url: '/userapi/resume/upyoushi',
+					data: {
+						youshi:this.youshi
+					}
+				})
+				.then(res => {
+					if (res.code == 0) {
+						uni.showToast({
+							title: '操作成功',
+							duration: 2000
+						});
+						setTimeout(function() {
+							uni.navigateBack();
+						}, 2000);
+					}
+				});
 		}
 	}
 };

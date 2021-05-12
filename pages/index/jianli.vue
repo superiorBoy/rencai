@@ -20,25 +20,25 @@
 				</view>
 				<view class=" hui_28 jianli_top_txt">除了与你沟通的人外，将不会有更多的招聘者和 猎头/中介等经纪人看到你的简历</view>
 			</view>
-			<navigator url="geren" class="jianli_name">
+			<navigator url="geren" class="jianli_name" v-if="jianli">
 				<view class="jianli_name_left">
 					<view class="jianli_name_txt">
-						张晓梅
+						{{jianli.nickname}}
 						<image src="../../static/index_img/hei_bianji.png" mode=""></image>
 					</view>
-					<view class="qian_30">5年工作经验 · 26岁 · 本科</view>
+					<view class="qian_30">{{jisuan_time(jianli.worktime)}}年工作经验 · {{jisuan_time(jianli.birthday)}}岁 · {{xueli_obj[jianli.eduid]}}</view>
 				</view>
 				<view class="jianli_name_right">
-					<image src="../../static/index_img/nv_tx.png" mode="" class="tx"></image>
-					<image src="../../static/qy_img/nv.png" mode="" class="sex"></image>
+					<image :src="img_url+user.photourl" mode="" class="tx"></image>
+					<image :src="user.sexid==2?'../../static/qy_img/nv.png':'../../static/qy_img/nan.png'" mode="" class="sex" ></image>
 				</view>
 			</navigator>
-			<navigator url="youshi" class="jianli_youshi">
+			<navigator url="youshi" class="jianli_youshi" v-if="jianli">
 				<view class="jianli_youshi_top hei_36_bold">
 					<text>个人优势</text>
 					<image src="../../static/index_img/hei_bianji.png" mode=""></image>
 				</view>
-				<view class="jianli_youshi_bottom hui_28">熟练掌握各种前端技术，包括HTML、CSS、JavaScript、Node.js 等；深入了解 JavaScript 语言...</view>
+				<view class="jianli_youshi_bottom hui_28" >{{jianli.youshi}}</view>
 			</navigator>
 
 			<view class="jianli_qiwang">
@@ -47,7 +47,7 @@
 					<image src="../../static/index_img/jianli_tianjia.png" mode="" @click="go_qiwang"></image>
 				</view>
 
-				<view class="jianli_qiwang_bottom" @click="go_qiwang">
+				<view class="jianli_qiwang_bottom" @click="go_qiwang" v-for="item in jianli.expect">
 					<view class="jianli_qiwang_bottom_zhiwei hei_30_bold">
 						<text>前端开发工程师 25-50K</text>
 						<image src="../../static/qy_img/go_right.png" mode=""></image>
@@ -194,12 +194,31 @@
 <script>
 export default {
 	data() {
-		return {};
+		return {
+			jianli:'',
+			user:'',
+			img_url:uni.getStorageSync("img_url"),
+			xueli_obj:''
+			
+		};
 	},
 	created() {},
 
 	onShow() {},
-	onLoad() {},
+	onLoad() {
+		this.$http
+			.post({
+				url: '/userapi/user/user'
+			})
+			.then(res => {
+				if (res.code == 0) {
+					this.user = res.data.user;
+				}
+			});
+		this.huoqu_xueli();
+		
+		
+	},
 	methods: {
 		navigateBack() {
 			uni.navigateBack();
@@ -228,6 +247,36 @@ export default {
 			uni.navigateTo({
 				url: 'add_jiaoyu'
 			});
+		},
+		jisuan_time(time){
+			if(time){
+				var date=new Date;
+				var num=Number(time.substring(0,4)) 
+				var y = date.getFullYear()
+				return y-num
+			}
+			
+		},
+		huoqu_xueli() {
+			this.$http
+				.post({
+					url: '/userapi/index/edu'
+				})
+				.then(res => {
+					if (res.code == 0) {
+						this.xueli_obj = res.data;
+						this.huoqu_jianli()
+					}
+				});
+		},
+		huoqu_jianli(){
+			this.$http
+				.post({
+					url: '/userapi/resume/my'
+				})
+				.then(res => {
+					this.jianli=res.data.user
+				});
 		}
 	},
 	filters: {

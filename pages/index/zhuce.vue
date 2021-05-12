@@ -4,7 +4,7 @@
 			<view class="head_back" style="width: 10%;"><image src="../../static/qy_img/back.png" mode="" @click="navigateBack()"></image></view>
 			<view class="head_center hei_38_bold zhuce_tab_center">
 				<view class="zhuce_tab qian_30_bold">
-					<view :class="['zhuce_tab_item', index == active ? 'zhuce_tab_item_active' : '']" v-for="(tab, index) in tabs" @click="zhuce_qiehuan(index)">{{ tab }}</view>
+					<view :class="['zhuce_tab_item', index == active-1 ? 'zhuce_tab_item_active' : '']" v-for="(tab, index) in tabs" @click="zhuce_qiehuan(index)">{{ tab }}</view>
 				</view>
 			</view>
 			<view class="hei_30_bold head_right" style="width: 10%;"><navigator url="login">登录</navigator></view>
@@ -12,47 +12,63 @@
 
 		<view class="zi_body">
 			<view class="yonghu_zhuce ">
+				
+				
+				<view class="zhuce_list" v-if="active==2">
+					<image src="../../static/index_img/shouji_icon.png"></image>
+					<input type="text" value="" placeholder="请输入企业名称" v-model="shouji" class="hei_28"/>
+				</view>
+				<view class="zhuce_list"v-if="active==2">
+					<image src="../../static/index_img/shouji_icon.png"></image>
+					<input type="text" value="" placeholder="请输入联系人" v-model="shouji" class="hei_28"/>
+				</view>
+				
 				<view class="zhuce_list">
 					<image src="../../static/index_img/shouji_icon.png"></image>
-					<input type="text" value="" placeholder="手机号码" v-model="shouji" />
+					<input type="text" value="" :placeholder="active==1?'手机号码':'请输入电话号码'" v-model="shouji" class="hei_28"/>
 				</view>
 				<view class="zhuce_list zhuce_list_yanzheng">
 					<view class="zhuce_list_left">
 						<image src="../../static/index_img/duanxin_icon.png" mode="" class="yanzheng_icon"></image>
-						<input type="text" placeholder="验证码" v-model="code" />
+						<input type="text" placeholder="验证码" v-model="code"class="hei_28" />
 					</view>
 					<button @click="VerificationCode($event)" :class="['background_zhuti', isdisabled == true ? 'border' : '']" ref="yanzheng_btn" :disabled="isdisabled">
 						{{ yan_txt }}
 					</button>
 				</view>
+				
+				<view class="zhuce_list"v-if="active==2">
+					<image src="../../static/index_img/shouji_icon.png"></image>
+					<input type="text" value="" placeholder="请输入用户名" v-model="name" class="hei_28"/>
+				</view>
+				
 				<view class="zhuce_list">
 					<image src="../../static/index_img/mima_icon.png" mode=""></image>
-					<input :type="type1" value="" placeholder="请设置一个最少6位的密码" @input="mimashu" />
+					<input :type="type1" value="" placeholder="请设置一个最少6位的密码" @input="mimashu" class="hei_28"/>
 					<image :src="yan1_zhuangtai" mode="" @click="chakan(1)" :class="['yanjing', type1 == 'text' ? 'kai' : 'guan']"></image>
 				</view>
 				<view class="zhuce_list">
 					<image src="../../static/index_img/mima_icon.png" mode=""></image>
-					<input :type="type2" value="" placeholder="请再次输入密码" @input="agamimashu" />
+					<input :type="type2" value="" placeholder="请再次输入密码" @input="agamimashu"class="hei_28" />
 					<image :src="yan2_zhuangtai" mode="" @click="chakan(2)" :class="['yanjing', type2 == 'text' ? 'kai' : 'guan']"></image>
 				</view>
 
-				<view class="zhuce_list">
+				<view class="zhuce_list" v-if="active==1">
 					<image src="../../static/index_img/yaoqing_icon.png" mode="" class="yaoqing_icon"></image>
-					<input type="text" value="" placeholder="请输入邀请码(选填)" v-model="yaoqingma" />
+					<input type="text" value="" placeholder="请输入邀请码(选填)" v-model="yaoqingma" class="hei_28"/>
 				</view>
 
 				<view class="xieyi qian_24">
 					<checkbox :checked="isCheck" @click="checkBox($event)" class="xieyi_xuan" />
 					我已阅读并同意
-					<navigator url="xieyi" class="hong_24">《用户协议》</navigator>
-					和
-					<navigator url="yinsi11111111111111" class="hong_24">《隐私政策》</navigator>
+					<navigator url="xieyi" class="shenlan_24">《人才网协议》</navigator>
+					
 				</view>
 			</view>
 			<button type="" class="zhuce bai_30" @click="zhuce">立即注册</button>
 			<view class="zhuce_tishi qian_24">
 				已有账号？
-				<navigator url="login" class="hong_24">请登录</navigator>
+				<navigator url="login" class="shenlan_24">请登录</navigator>
 			</view>
 		</view>
 	</view>
@@ -62,8 +78,8 @@
 export default {
 	data() {
 		return {
-			tabs: ['用户注册', '律师注册'],
-			active: '0',
+			tabs: ['个人注册', '企业注册'],
+			active: 1,
 			code: '',
 			mima: '',
 			agamima: '',
@@ -71,22 +87,30 @@ export default {
 			shouji: '',
 			type1: 'password',
 			type2: 'password',
-			isCheck: false,
+			isCheck: true,
 			yan_txt: '获取验证码',
 			isdisabled: false,
 			yan1_zhuangtai: '../../static/index_img/yanguan.png',
 			yan2_zhuangtai: '../../static/index_img/yanguan.png',
 			is_xinxi: '',
-			dianji: true
+			dianji: true,
+			name:'',
+			qiyename:'',
+			lianxiren:''
 		};
 	},
 	onLoad(option) {
 		// this.is_duanxin()
+		
+		if(option.type){
+			this.active=option.type
+		}
+		 
 	},
 
 	methods: {
 		zhuce_qiehuan(index) {
-			this.active = index;
+			this.active = index+1;
 		},
 		navigateBack() {
 			uni.navigateBack();
@@ -139,7 +163,7 @@ export default {
 
 			this.$http
 				.post({
-					url: '/index/login/sendsms',
+					url: '/userapi/login/sendsms',
 					data: {
 						mobile: this.shouji
 					}
@@ -172,18 +196,7 @@ export default {
 		zhuce() {
 			var that = this;
 			console.log(this.active);
-			//#ifdef APP-PLUS
-			if (uni.getSystemInfoSync().platform == 'ios') {
-				var laiyuan = 'ios';
-			} else if (uni.getSystemInfoSync().platform === 'android') {
-				var laiyuan = 'Android';
-			}
-			//#endif
 
-			// #ifdef H5
-			var laiyuan = 'H5';
-			// #endif
-			console.log(laiyuan);
 			if (this.shouji == '' || this.mima == '' || this.agamima == '') {
 				uni.showToast({
 					title: '请填写完整',
@@ -211,34 +224,39 @@ export default {
 
 			if (this.dianji) {
 				this.dianji = false;
-				if (this.active == '0') {
-					var url = '/index/login/register';
+				if (this.active == 1) {
+					var url = '/userapi/login/register';
+					var data={
+						mobile: this.shouji,
+						password: this.mima,
+						password1: this.agamima,
+						code: this.code,
+						randcode: this.yaoqingma
+					}
 				} else if (this.active == '1') {
 					var url = '/lawyer/login/register';
+					var data={
+						mobile: this.shouji,
+						password: this.mima,
+						password1: this.agamima,
+						code: this.code
+						
+					}
 				}
 
 				this.$http
 					.post({
 						url: url,
-						data: {
-							mobile: this.shouji,
-							password: this.mima,
-							password1: this.agamima,
-							code: this.code,
-							randcode: this.yaoqingma,
-							source: laiyuan
-						}
+						data: data
 					})
 					.then(res => {
 						console.log(res);
 						if (res.code == 0) {
-							// uni.switchTab({
-							// 	url:'index'
-							// })
-							uni.removeStorageSync('user_chat_list');
-							uni.removeStorageSync('ls_chat_list');
-							uni.reLaunch({
-								url: 'wanshan'
+							// uni.removeStorageSync('user_chat_list');
+							// uni.removeStorageSync('ls_chat_list');
+							uni.setStorageSync("token",res.data.token)
+							uni.switchTab({
+								url: 'my'
 							});
 						}
 						that.dianji = true;
@@ -246,6 +264,8 @@ export default {
 
 				console.log(this.shouji, this.mima, this.agamima);
 			} else {
+				
+				
 			}
 
 			console.log(this.isCheck);
@@ -268,18 +288,24 @@ export default {
 <style>
 .zhuce_tab_center {
 	display: flex;
+	background-color: #f8f8f8;
+	width: 344rpx;
+	border-radius: 37px;
 }
-
+.zi_body{
+	padding-left: 30rpx;
+	padding-right: 30rpx;
+}
 .zhuce_tab_item {
 	line-height: 63rpx;
 	text-align: center;
 	width: 170rpx;
-	height: 63rpx;
+	height:63rpx;
 }
 
 .zhuce_tab_item_active {
-	background-color: #f43a51;
-	border-radius: 31rpx;
+	background-color: #1986fb;
+	border-radius: 37rpx;
 	color: #ffffff;
 }
 
@@ -299,7 +325,7 @@ export default {
 }
 
 .yonghu_zhuce {
-	padding: 0 30rpx;
+	
 	font-size: 28rpx;
 	color: #777777;
 }
@@ -386,7 +412,7 @@ button {
 
 .zhuce {
 	height: 88rpx;
-	background-color: #f43a51;
+	background-color: #1986fb;
 	border-radius: 44rpx;
 	line-height: 88rpx;
 }

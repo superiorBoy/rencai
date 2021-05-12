@@ -11,48 +11,42 @@
 				<view class="geren_item">
 					<view class="geren_item_top">
 						<view class="hui_26 geren_item_title">学校</view>
-						<view class="hei_32"><input type="text" value="" v-model="xuexiao" placeholder="请输入" class="hei_34"/></view>
+						<view class="hei_32"><input type="text" value="" v-model="xuexiao" placeholder="请输入" class="hei_34" /></view>
 					</view>
 					<image src="../../static/qy_img/go_right.png" mode="" class="go_right"></image>
 				</view>
 
-			
-				
-				<picker mode="selector" :range="xueli_arry" @change="xueli_change" >
-				<view class="geren_item">
-					<view class="geren_item_top">
-						<view class="hui_26 geren_item_title">学历</view>
-						<view  :class="xueli?'hei_34':'qian_34'">{{xueli?xueli:'请选择'}}</view>
+				<picker :range="xueli_arry" @change="xueli_change" mode="selector" :range-key="'name'">
+					<view class="geren_item">
+						<view class="geren_item_top">
+							<view class="hui_26 geren_item_title">学历</view>
+							<view :class="xueli ? 'hei_34' : 'qian_34'">{{ xueli ? xueli : '请选择' }}</view>
+						</view>
+						<image src="../../static/qy_img/go_right.png" mode="" class="go_right"></image>
 					</view>
-					<image src="../../static/qy_img/go_right.png" mode="" class="go_right"></image>
-				</view>
 				</picker>
-				<picker mode="selector" :range="zhuanye_arry" @change="zhuanye_change" >
-				<view class="geren_item">
-					<view class="geren_item_top">
-						<view class="hui_26 geren_item_title">专业</view>
-						<view  :class="zhuanye?'hei_34':'qian_34'">{{zhuanye?zhuanye:'请选择'}}</view>
+				<picker mode="selector" :range="zhuanye_arry" @change="zhuanye_change">
+					<view class="geren_item">
+						<view class="geren_item_top">
+							<view class="hui_26 geren_item_title">专业</view>
+							<view :class="zhuanye ? 'hei_34' : 'qian_34'">{{ zhuanye ? zhuanye : '请选择' }}</view>
+						</view>
+						<image src="../../static/qy_img/go_right.png" mode="" class="go_right"></image>
 					</view>
-					<image src="../../static/qy_img/go_right.png" mode="" class="go_right"></image>
-				</view>
 				</picker>
-					<rangeDatePick  :show="isShow"  	@change="shijian_change" @showchange="showchange"
-	        @cancel="bindCancel" fields='month'></rangeDatePick>
+				<rangeDatePick :show="isShow" start="1900-01" end="2200-12" @change="shijian_change" @showchange="showchange" @cancel="bindCancel" fields="month"></rangeDatePick>
 				<view class="geren_item" @click="tan_shijian">
 					<view class="geren_item_top">
 						<view class="hui_26 geren_item_title">时间段</view>
-						<view :class="shijian?'hei_34':'qian_34'">{{shijian?shijian:'请选择'}}</view>
+						<view :class="shijian ? 'hei_34' : 'qian_34'">{{ shijian ? shijian : '请选择' }}</view>
 					</view>
 					<image src="../../static/qy_img/go_right.png" mode="" class="go_right"></image>
 				</view>
-				
-				
-			
-			
+
 				<view class="geren_item">
 					<view class="geren_item_top">
 						<view class="hui_26 geren_item_title">在校经历</view>
-						<view class="hei_32"> <input type="text" value="" v-model="jingli" placeholder="请输入" class="hei_34"/></view>
+						<view class="hei_32"><input type="text" value="" v-model="jingli" placeholder="请输入" class="hei_34" /></view>
 					</view>
 					<image src="../../static/qy_img/go_right.png" mode="" class="go_right"></image>
 				</view>
@@ -62,70 +56,69 @@
 </template>
 
 <script>
-	import rangeDatePick from '@/components/pyh-rdtpicker/pyh-rdtpicker.vue';
+import rangeDatePick from '@/components/pyh-rdtpicker/pyh-rdtpicker.vue';
 export default {
 	components: {
 		rangeDatePick
 	},
 	data() {
 		return {
-			xuexiao:'',
-			xueli_arry:['初中及以下','中专/中技','高中','大专','本科','硕士','博士'],
-			xueli:'',
-			zhuanye:'',
-			zhuanye_arry:['1','2','3','4'],
-			jingli:'',
-            shijian:'',
-			isShow:false
+			xuexiao: '',
+			xueli_arry: [],
+			xueli: '',
+			zhuanye: '',
+			zhuanye_arry: ['1', '2', '3', '4'],
+			jingli: '',
+			shijian: '',
+			isShow: false,
+			xueli_obj: {},
+			xueli_id: ''
 		};
 	},
 	onLoad() {
-		
-		this.huoqu_xueli()
-	
+		this.huoqu_xueli();
 	},
 	methods: {
 		navigateBack() {
 			uni.navigateBack();
 		},
-		huoqu_xueli(){
+		huoqu_xueli() {
 			this.$http
 				.post({
-					url: '/userapi/index/edu',
+					url: '/userapi/index/edu'
 				})
 				.then(res => {
-					console.log(res);
 					if (res.code == 0) {
-	
-					
+						this.xueli_obj = res.data;
+						var array = [];
+						for (var key in res.data) {
+							array.push({ name: res.data[key], id: key });
+						}
+						this.xueli_arry = array;
 					}
-					
 				});
-			
 		},
-		xueli_change(e){
-			this.xueli=this.xueli_arry[e.detail.value]
+		xueli_change(e) {
+			console.log(e);
+			this.xueli_id = this.xueli_arry[e.detail.value].id;
+			this.xueli = this.xueli_arry[e.detail.value].name;
 		},
-		zhuanye_change(e){
-			this.zhuanye=this.zhuanye_arry[e.detail.value]
+		zhuanye_change(e) {
+			this.zhuanye = this.zhuanye_arry[e.detail.value];
 		},
-		tan_shijian(){
-			this.isShow=true
+		tan_shijian() {
+			this.isShow = true;
 		},
-		shijian_change(e){
-			console.log(e)
-			this.shijian = e[0]+' - '+e[1];
-			this.isShow=false
+		shijian_change(e) {
+			console.log(e);
+			this.shijian = e[0] + ' - ' + e[1];
 		},
-		bindCancel(){
-			this.isShow=false
+		bindCancel() {},
+		showchange() {
+			this.isShow = !this.isShow;
 		},
-		showchange(){
-			this.isShow=!this.isShow;
-		},
-		baocun(){
-			
-			
+		baocun() {
+			console.log(this.xueli_id);
 		}
 	}
 };
@@ -136,11 +129,10 @@ export default {
 	background-color: #ffffff;
 	border-bottom: 2rpx solid #f5f5f5;
 }
-.head_center{
+.head_center {
 	width: 60%;
 }
 .zi_body {
-	
 }
 
 .geren_list {
@@ -153,9 +145,9 @@ export default {
 	height: 172rpx;
 	border-bottom: 2rpx solid #f5f5f5;
 }
-.geren_item input{
+.geren_item input {
 	width: 560rpx;
-	}
+}
 .geren_tx {
 	align-items: flex-end;
 	padding-bottom: 30rpx;

@@ -49,6 +49,9 @@
 			"path": "pages/index/add_zhiyuan"
 		},
 		{
+			"path": "pages/index/forget"
+		},
+		{
 			"path": "pages/index/chongzhi"
 		},
 		{

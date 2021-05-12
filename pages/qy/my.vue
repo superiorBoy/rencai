@@ -172,7 +172,9 @@ export default {
 			shenfen:1
 		};
 	},
-	onLoad() {},
+	onLoad() {
+		  
+	},
 	methods: {
 		tiaozhuan(url){
 			uni.navigateTo({

@@ -8,14 +8,15 @@
 
 		<view class="zi_body">
 			<view class="mingxi_top">
-				<timeSelector showType="yearToMonth" @btnConfirm="gongzuo_change">
-					<view class="mingxi_top_left hei_24">
+	
+					<view class="mingxi_top_left hei_24" @click="tan_shijian">
 						{{ shijian ? shijian : '选择时间' }}
 						<image src="../../static/index_img/xaingxia.png" mode=""></image>
 					</view>
-				</timeSelector>
 				<view class="mingxi_top_right qian_28">账户余额￥100.00</view>
 			</view>
+			<rangeDatePick :show="isShow" start="1900-01" end="2200-12" @change="shijian_change" @showchange="showchange" @cancel="bindCancel" fields="month"></rangeDatePick>
+					
 			<view class="liushui_list">
 				<view class="liushui_item" v-for="item in 5">
 					<view class="liushui_item_top">
@@ -30,18 +31,16 @@
 					<view class="liushui_item_bottom hui_20">备注：邀请好友获得奖励</view>
 				</view>
 			</view>
-			<view class="tishi qian_24">
-				仅展示最近一个月的消息
-			</view>
+			<view class="tishi qian_24">仅展示最近一个月的消息</view>
 		</view>
 	</view>
 </template>
 
 <script>
-import timeSelector from '@/components/wing-time-selector/wing-time-selector.vue';
+import rangeDatePick from '@/components/pyh-rdtpicker/pyh-rdtpicker.vue';
 export default {
 	components: {
-		timeSelector
+		rangeDatePick
 	},
 
 	data() {
@@ -49,19 +48,28 @@ export default {
 			page: 0,
 			is_all: false,
 			liushui_list: [],
-			shijian: ''
+			shijian: '',
+		    isShow:false
+			
 		};
 	},
 	created() {},
 	//下拉刷新
 	onPullDownRefresh: function() {
-		// this.getList();
+		this.page=0
+		this.is_all=false
+		this.liushui_list=[]
+		this.zhuanchang_txt=''
+		
+		
 	},
 	// stopPullDownRefresh:function(){
 
 	// },
 	onShow() {},
-	onLoad() {},
+	onLoad() {
+		// this.huoqu_liushui()
+	},
 	methods: {
 		//上拉加载
 		onReachBottom() {},
@@ -70,16 +78,43 @@ export default {
 		},
 		huoqu_liushui() {
 			// 获取流水记录
+
+			if (this.zhuanchang_txt != '') {
+				this.liushui_list = [];
+			}
+
+			this.$http
+				.post({
+					url: '/userapi/user/liushui',
+					data: {
+						page: this.page,
+						grade: this.zhuanchang_txt,
+						riqi: this.shijian
+					}
+				})
+				.then(res => {
+					this.liushui_list = this.liushui_list.concat(res.data.bill);
+
+					if (res.data.bill.length < 10) {
+						this.is_all = true;
+					}
+					this.leixing = res.data.grade;
+				});
 		},
-		// 选择时间
-		gongzuo_change(e) {
-			this.shijian = e.key;
+		
+		tan_shijian() {
+			this.isShow = true;
 		},
-		queding_btn() {
-			console.log(this.time, this.zhuanchang_txt);
-			this.$refs.popup.close();
+		shijian_change(e) {
+			console.log(e);
+			this.shijian = e[0] + ' - ' + e[1];
 			this.huoqu_liushui();
-		}
+		},
+		bindCancel() {},
+		showchange() {
+			this.isShow = !this.isShow;
+		},
+		
 	},
 	filters: {
 		timeStamp: function(value) {
@@ -105,7 +140,6 @@ export default {
 
 <style>
 .zi_body {
-	
 }
 
 .tab_top {
@@ -151,7 +185,8 @@ export default {
 	justify-content: space-between;
 }
 .mingxi_top_left {
-	width: 210rpx;
+	min-width: 170rpx;
+	padding: 0 20rpx;
 	height: 56rpx;
 	background-color: #ffffff;
 	border-radius: 28rpx;
@@ -169,7 +204,7 @@ export default {
 	color: #fa6a43;
 	font-size: 28rpx;
 }
-.tishi{
+.tishi {
 	text-align: center;
 	margin: 48rpx 0;
 }

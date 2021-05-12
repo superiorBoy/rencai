@@ -12,7 +12,7 @@
 			
 			<view class="qianbao_top">
 				<view class="qianbao_top_money">
-					100.00
+					{{user.rmb}}
 				</view>
 				<view class="qianbao_top_yue bai_30">
 					<image src="../../static/index_img/bai_qianbao.png" mode=""></image>账户余额
@@ -42,7 +42,7 @@
 				</view>
 			</view>
 			<view class="liushui_list">
-				<view class="liushui_item" v-for="item in 5">
+				<view class="liushui_item" v-for="item in liushui_list">
 					<view class="liushui_item_top">
 						<text class="hei_28_bold">奖励</text>
 						<text class="money">￥30</text>
@@ -74,7 +74,8 @@ export default {
 			page: 0,
 			is_all: false,
 			liushui_list: [],
-			shijian: ''
+			shijian: '',
+			user:''
 		};
 	},
 	created() {},
@@ -86,7 +87,17 @@ export default {
 
 	// },
 	onShow() {},
-	onLoad() {},
+	onLoad() {
+		this.huoqu_liushui()
+		this.$http
+			.post({
+				url: '/userapi/user/user'
+			})
+			.then(res => {
+				this.user=res.data.user
+				
+			});
+	},
 	methods: {
 		//上拉加载
 		onReachBottom() {},
@@ -95,7 +106,23 @@ export default {
 		},
 		huoqu_liushui() {
 			// 获取流水记录
+			this.$http
+				.post({
+					url: '/userapi/user/liushui',
+					data: {
+						page: this.page
+					}
+				})
+				.then(res => {
+					this.liushui_list = this.liushui_list.concat(res.data.bill);
+			
+					if (res.data.bill.length < 10) {
+						this.is_all = true;
+					}
+					this.leixing = res.data.grade;
+				});
 		},
+		
 		// 选择时间
 		gongzuo_change(e) {
 			this.shijian = e.key;
