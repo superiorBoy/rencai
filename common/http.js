@@ -76,6 +76,24 @@ function request(url,method,data,header={}){
     })
   })
 }
+ function  jspost(URL, PARAMS=[]) {
+	 // #ifdef H5
+      var temp = document.createElement("form");
+      temp.action = URL;
+      temp.method = "post";
+      temp.target = "";//跳转到新页面
+      temp.style.display = "none";
+      for (var x in PARAMS) {
+          var opt = document.createElement("textarea");
+          opt.name = x;
+          opt.value = PARAMS[x];
+          temp.appendChild(opt);
+      }
+      document.body.appendChild(temp);
+      temp.submit();
+      return temp;
+	  // #endif
+  }
 
 
 // 封装get方法
@@ -94,5 +112,6 @@ export default {
   get,
   post,
   baseUrl,
-  WebSocket_url
+  WebSocket_url,
+  jspost
 }

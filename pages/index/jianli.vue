@@ -204,7 +204,9 @@ export default {
 	},
 	created() {},
 
-	onShow() {},
+	onShow() {
+		this.huoqu_jianli()
+	},
 	onLoad() {
 		this.$http
 			.post({

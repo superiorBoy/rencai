@@ -27,20 +27,21 @@
 					</view>
 				</view>
 			</pickerAddress2>
-			<view class="shiming_list hei_28">
+			<picker mode="selector" :range="zhiwei_arry" @change="zhiwei_change" class="shiming_list hei_28" range-key="positionname"> 
+
 				<view class="shiming_list_top ">期望职位</view>
 				<view class="shiming_list_bottom">
-					<view class="shiming_list_left qian_36">请选择期望职位</view>
+					<view class="shiming_list_left " :class="zhiwei ? 'hei_36' : 'qian_36'">{{zhiwei?zhiwei:'请选择期望职位'}}</view>
 					<image src="../../static/qy_img/go_right.png" mode=""></image>
 				</view>
-			</view>
-			<view class="shiming_list hei_28">
+			</picker>
+			<picker mode="selector" :range="hangye_arry" @change="hangye_change" class="shiming_list hei_28" range-key="industryname"> 
 				<view class="shiming_list_top ">期望行业</view>
 				<view class="shiming_list_bottom">
-					<view class="shiming_list_left qian_36">请选择期望行业</view>
+					<view class="shiming_list_left " :class="hangye ? 'hei_36' : 'qian_36'">{{hangye?hangye:'请选择期望行业'}}</view>
 					<image src="../../static/qy_img/go_right.png" mode=""></image>
 				</view>
-			</view>
+			</picker>
 			<picker mode="multiSelector" :range="xinxi_arry" @change="xuan_xinzi" @columnchange="xinzi_change">
 				<view class="shiming_list hei_28">
 					<view class="shiming_list_top ">期望要求</view>
@@ -51,7 +52,7 @@
 				</view>
 			</picker>
 
-			<button class="bai_36">保存</button>
+			<button class="bai_36" @click='save'>保存</button>
 		</view>
 	</view>
 </template>
@@ -67,16 +68,26 @@ export default {
 			leixing_on: 1,
 			dizhi: '',
 			xinzi: '',
-			xinxi_arry: [['1K'], ['请选择']]
+			xinxi_arry: [['1K'], ['请选择']],
+			user_expectid:'',
+			hangye_arry:[],
+			hangye:'',
+			hangyeid:'',
+			zhiwei_arry:[],
+			zhiwei:''
+			
 		};
 	},
 	created() {},
 	onLoad(option) {
-		var qian_xinxi = [];
-		for (var i = 1; i < 20; i++) {
-			qian_xinxi.push(i + 'K');
+		
+		if(option.user_expectid){
+			this.user_expectid=option.user_expectid
 		}
-		this.xinxi_arry[0] = qian_xinxi;
+		
+		this.jiage()
+		this.huoqu_hangye()
+		this.huoqu_zhiwei()
 	},
 	methods: {
 		navigateBack() {
@@ -86,7 +97,49 @@ export default {
 			// this.dizhi = data.data[0] + '-' + data.data[1];
 			this.dizhi = data.data[1];
 		},
-
+		hangye_change(e){
+			console.log(e)
+			this.hangye=this.hangye_arry[e.detail.value].industryname
+			this.hangyeid=this.hangye_arry[e.detail.value].industryid
+			
+		},
+		zhiwei_change(e){
+			this.zhiwei=this.zhiwei_arry[e.detail.value].positionname
+		},
+		huoqu_zhiwei(){
+			this.$http
+				.post({
+					url: '/userapi/index/position'
+				})
+				.then(res => {
+					if (res.code == 0) {
+						this.zhiwei_arry = res.data;
+					}
+				});
+		},
+		huoqu_hangye(){
+			this.$http
+				.post({
+					url: '/userapi/index/industry'
+				})
+				.then(res => {
+					if (res.code == 0) {
+						this.hangye_arry = res.data;
+					}
+				});
+		},
+           jiage(){
+			   
+			   var qian_xinxi = [];
+			   var hou = [];
+			   for (var i = 1; i < 20; i++) {
+			     	qian_xinxi.push(i + 'K');
+					hou.push(i+1 + 'K');
+					
+			   }
+			   this.xinxi_arry[0] = qian_xinxi;
+			   this.xinxi_arry[1] = hou;
+		   },
 		xuan_leixing(index) {
 			this.leixing_on = index;
 		},
@@ -118,29 +171,77 @@ export default {
 		},
 		go_hangye() {},
 		save() {
-			// this.$http
-			// 	.post({
-			// 		url: '/lawyer/user/zx_geren',
-			// 		data: {
-			// 			state: 11,
-			// 			shijian: this.time,
-			// 			shijian2: this.end_time,
-			// 			jigou: this.jigou,
-			// 			zhiwu: this.zhiwu,
-			// 			lyinfoid: this.id
-			// 		}
-			// 	})
-			// 	.then(res => {
-			// 		if (res.code == 0) {
-			// 			uni.showToast({
-			// 				title: '操作成功',
-			// 				duration: 2000
-			// 			});
-			// 			setTimeout(function() {
-			// 				uni.navigateBack();
-			// 			}, 2000);
-			// 		}
-			// 	});
+			
+			
+			if(this.dizhi==''){
+				uni.showToast({
+					title: '请选择工作城市',
+					duration: 2000,
+					icon: 'none'
+				});
+				return false;
+			}
+			if(this.zhiwei==''){
+				uni.showToast({
+					title: '请选择期望职位',
+					duration: 2000,
+					icon: 'none'
+				});
+				return false;
+			}
+			if(this.hangye==''){
+				uni.showToast({
+					title: '请选择期望行业',
+					duration: 2000,
+					icon: 'none'
+				});
+				return false;
+			}
+			if(this.xinzi==''){
+				uni.showToast({
+					title: '请选择期望要求',
+					duration: 2000,
+					icon: 'none'
+				});
+				return false;
+			}
+			
+			
+			
+			
+			
+			console.log(this.xinzi)
+	     	var xinzi_txt=this.xinzi.split('-')	
+			
+			
+			var data={
+				expecttype:this.leixing_on,
+				expectcity:this.dizhi,
+				expectjob:this.zhiwei,
+				industryid:this.hangyeid,
+				expectminsalary:parseInt(xinzi_txt[0])*1000,
+				expectmaxsalary:parseInt(xinzi_txt[1])*1000,
+				user_expectid:this.user_expectid
+				
+			}
+			console.log(data)
+			return false
+			this.$http
+				.post({
+					url: '/userapi/resume/user_expect',
+					data:data
+				})
+				.then(res => {
+					if (res.code == 0) {
+						uni.showToast({
+							title: '操作成功',
+							duration: 2000
+						});
+						setTimeout(function() {
+							uni.navigateBack();
+						}, 2000);
+					}
+				});
 		}
 	}
 };
